@@ -6,7 +6,7 @@
 /*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:20:27 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/04 18:28:49 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/06/05 17:48:56 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,23 @@
 
 # ifdef USE_MATH
 #  define PI		3.14159265358979323846
+
 # endif
+//---------------------Pre-Defined Colors----------------------//
+static const t_color	g_red = (t_color){.value = 0x00ff0000};
+static const t_color	g_green = (t_color){.value = 0x0000ff00};
+static const t_color	g_blue = (t_color){.value = 0x000000ff};
+static const t_color	g_white = (t_color){.value = 0x00ffffff};
+static const t_color	g_black = (t_color){.value = 0x00000000};
+static const t_color	g_gray = (t_color){.value = 0x00808080};
+//static const t_color	g_red = (t_color){.value = 0x00ff0000};
+//static const t_color	g_red = (t_color){.value = 0x00ff0000};
+//static const t_color	g_red = (t_color){.value = 0x00ff0000};
+//static const t_color	g_red = (t_color){.value = 0x00ff0000};
+//static const t_color	g_red = (t_color){.value = 0x00ff0000};
+//static const t_color	g_red = (t_color){.value = 0x00ff0000};
+
+
 
 void		*ft_bzero(void *s, size_t n);
 char		*ft_strdup(const char *s);
@@ -219,7 +235,6 @@ size_t		ft_string_cat(t_string *dst, char *src);
 //-----------------------Hash-------------------------
 
 size_t			ft_hash(void *data, size_t size);
-
 
 //-----------------------Lists------------------------
 

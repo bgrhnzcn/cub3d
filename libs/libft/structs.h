@@ -6,7 +6,7 @@
 /*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:34:50 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/04 18:25:11 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/06/05 17:33:58 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ typedef union u_color
 	unsigned int	value;
 }	t_color;
 
-# define RED 0xffffffff
-
 # else
 
 typedef union u_color
@@ -41,8 +39,6 @@ typedef union u_color
 	};
 	unsigned int	value;
 }	t_color;
-
-# define RED 0xffffffff
 
 # endif
 
@@ -76,7 +72,7 @@ typedef struct s_stack
 
 typedef enum e_types
 {
-	type_str = 0,
+	type_str = sizeof(void *),
 	type_int = sizeof(int),
 	type_char = sizeof(char),
 	type_pointer = sizeof(void *)

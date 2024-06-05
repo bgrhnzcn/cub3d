@@ -14,16 +14,16 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_string_free.c ft_hash.c ft_strequ.c
 
 
-ifdef $(USE_MATH)
+ifeq ($(USE_MATH),TRUE)
 	SRCS += ft_vec_conv.c ft_vec2_float.c ft_vec2_op.c ft_vec2_vec2.c \
 	ft_vec3_float.c ft_vec3_vec3.c ft_vec3_op.c ft_vec4_float.c ft_vec4_op.c \
 	ft_vec4_vec4.c ft_mtx3_basic.c ft_utils.c ft_mtx4_basic.c \
 	ft_bresenham_line.c ft_drawing.c ft_maps.c ft_colors.c
 endif
 
-ifdef $(USE_MATH)
+ifeq ($(USE_MATH),TRUE)
 %.o: %.c
-	$(CC) $(FLAGS) -D USE_MATH=1 -c $<
+	@$(CC) $(FLAGS) -D USE_MATH=1 -c $<
 else
 %.o: %.c
 	@$(CC) $(FLAGS) -c $<
@@ -40,13 +40,13 @@ OBJECTS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): ${OBJECTS}
-	ar -rcs $(NAME) $(OBJECTS)
+	@ar -rcs $(NAME) $(OBJECTS)
 
 clean:
-	rm -f *.o
+	@rm -f *.o
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
