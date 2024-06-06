@@ -6,7 +6,7 @@
 /*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:20:27 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/05 17:48:56 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/06/06 15:55:47 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,31 @@
 # ifdef USE_MATH
 #  include <math.h>
 # endif
-# include "structs.h"
+# include "ftstructs.h"
+# include "ftcolors.h"
 
 # ifdef USE_MATH
 #  define PI		3.14159265358979323846
+# endif
+
+# ifdef __linux__
+
+#  include <X11/keysym.h>
+#  define ESC_KEY XK_Escape
+#  define X_KEY XK_x
+#  define Z_KEY XK_z
+#  define O_KEY XK_o
+#  define P_KEY XK_p
+
+# else
+
+#  define ESC_KEY 53
+#  define X_KEY 7
+#  define Z_KEY 6
+#  define O_KEY 31
+#  define P_KEY 35
 
 # endif
-//---------------------Pre-Defined Colors----------------------//
-static const t_color	g_red = (t_color){.value = 0x00ff0000};
-static const t_color	g_green = (t_color){.value = 0x0000ff00};
-static const t_color	g_blue = (t_color){.value = 0x000000ff};
-static const t_color	g_white = (t_color){.value = 0x00ffffff};
-static const t_color	g_black = (t_color){.value = 0x00000000};
-static const t_color	g_gray = (t_color){.value = 0x00808080};
-//static const t_color	g_red = (t_color){.value = 0x00ff0000};
-//static const t_color	g_red = (t_color){.value = 0x00ff0000};
-//static const t_color	g_red = (t_color){.value = 0x00ff0000};
-//static const t_color	g_red = (t_color){.value = 0x00ff0000};
-//static const t_color	g_red = (t_color){.value = 0x00ff0000};
-//static const t_color	g_red = (t_color){.value = 0x00ff0000};
-
-
 
 void		*ft_bzero(void *s, size_t n);
 char		*ft_strdup(const char *s);

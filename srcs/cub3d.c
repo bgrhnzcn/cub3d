@@ -6,7 +6,7 @@
 /*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:53:18 by buozcan           #+#    #+#             */
-/*   Updated: 2024/06/05 18:28:07 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/06/06 15:58:07 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	draw_tile(t_mlx *cub3d, char tile, int x, int y)
 {
 	int	tile_size;
 
-	tile_size = 10;
+	tile_size = 60;
 	for (int i = tile_size * x; i < tile_size * (x + 1); i++)
 	{
 		for (int j = tile_size * y; j < tile_size * (y + 1); j++)
@@ -24,14 +24,15 @@ void	draw_tile(t_mlx *cub3d, char tile, int x, int y)
 			if (tile == '1')
 			{
 				ft_put_pixel(&cub3d->img, i, j, g_gray);
-				printf("Working on {x: %d, y: %d}\n", i ,j);
+				//printf("Working on {x: %d, y: %d}\n", i ,j);
 			}
 			else if (tile == '0')
 			{
 				ft_put_pixel(&cub3d->img, i, j, g_white);
-				printf("Working on {x: %d, y: %d}\n", i ,j);
+				//printf("Working on {x: %d, y: %d}\n", i ,j);
 			}
 		}
+		mlx_put_image_to_window(cub3d->mlx, cub3d->win.win, cub3d->img.img, 0, 0);
 	}
 }
 
@@ -64,7 +65,14 @@ int	update(void *param)
 	cub3d = (t_mlx *)param;
 	//ft_fill_img(cub3d, (t_color){.red = 255, .alpha = 255});
 	draw_map(cub3d);
-	mlx_put_image_to_window(cub3d->mlx, cub3d->win.win, cub3d->img.img, 0, 0);
+	return (0);
+}
+
+int	key_input(int keycode, t_mlx *cub3d)
+{
+	(void)cub3d;
+	if (keycode == ESC_KEY)
+		exit(EXIT_SUCCESS);
 	return (0);
 }
 
@@ -82,5 +90,6 @@ int	main(int argc, char **argv)
 	cub3d.img.data = mlx_get_mlx_addr(cub3d.img.img, &cub3d.img.bits_per_pixel,
 		&cub3d.img.size_line, &cub3d.img.endian);
 	mlx_loop_hook(cub3d.mlx, update, &cub3d);
+	mlx_hook(cub3d.win.win, 2, 1, key_input, &cub3d);
 	mlx_loop(cub3d.mlx);
 }
