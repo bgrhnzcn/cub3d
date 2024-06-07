@@ -1,5 +1,5 @@
-INCLUDES_LINUX = -I./libs/libft -I./libs/get_next_line \
-	-I./libs/linuxmlx -I./includes
+INCLUDES_LINUX = -I./libs/linuxmlx -I./libs/get_next_line \
+	-I./libs/libft -I./includes
 
 INCLUDES_MAC = -I./libs/macmlx -I./libs/get_next_line \
 	-I./libs/libft -I./includes
