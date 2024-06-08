@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:20:27 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/07 00:22:03 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/06/09 01:37:07 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -328,6 +328,8 @@ t_vec4		ft_vec4_mul(t_vec4 vec, float mul);
 t_vec4		ft_vec4_div(t_vec4 vec, float div);
 
 t_vec2		ft_vec2_norm(t_vec2 vec);
+t_vec2		ft_vec2_inv(t_vec2 vec);
+t_vec2		ft_vec2_rot(t_vec2 vec, int deg);
 
 float		ft_vec2_dot(t_vec2 vec1, t_vec2 vec2);
 float		ft_get_dist2(t_vec2 point1, t_vec2 point);

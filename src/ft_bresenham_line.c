@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bresenham_line.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 20:06:06 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/04 18:23:42 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/06/08 15:43:30 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
 static void	ft_drw_ln_hlpr_high(t_draw_line *d)
 {
@@ -24,7 +24,7 @@ static void	ft_drw_ln_hlpr_low(t_draw_line *d)
 	d->side_check = d->side_check + (2 * (d->delta.y - d->delta.x));
 }
 
-static void	ft_draw_line_low(t_mlx *dt, t_vec3 pt1, t_vec3 pt2, t_color color)
+static void	ft_draw_line_low(t_mlx *dt, t_vec2 pt1, t_vec2 pt2, t_color color)
 {
 	t_draw_line	d;
 
@@ -52,7 +52,7 @@ static void	ft_draw_line_low(t_mlx *dt, t_vec3 pt1, t_vec3 pt2, t_color color)
 	}
 }
 
-static void	ft_draw_line_high(t_mlx *dt, t_vec3 pt1, t_vec3 pt2, t_color color)
+static void	ft_draw_line_high(t_mlx *dt, t_vec2 pt1, t_vec2 pt2, t_color color)
 {
 	t_draw_line	d;
 
@@ -80,7 +80,7 @@ static void	ft_draw_line_high(t_mlx *dt, t_vec3 pt1, t_vec3 pt2, t_color color)
 	}
 }
 
-void	ft_draw_line(t_mlx *dt, t_vec3 pt1, t_vec3 pt2, t_color color)
+void	ft_draw_line(t_mlx *dt, t_vec2 pt1, t_vec2 pt2, t_color color)
 {
 	if (fabs(pt2.y - pt1.y) < fabs(pt2.x - pt1.x))
 	{

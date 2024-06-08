@@ -18,7 +18,7 @@ ifeq ($(USE_MATH),TRUE)
 	SRCS += ft_vec_conv.c ft_vec2_float.c ft_vec2_op.c ft_vec2_vec2.c \
 	ft_vec3_float.c ft_vec3_vec3.c ft_vec3_op.c ft_vec4_float.c ft_vec4_op.c \
 	ft_vec4_vec4.c ft_mtx3_basic.c ft_utils.c ft_mtx4_basic.c \
-	ft_bresenham_line.c ft_drawing.c ft_maps.c ft_colors.c
+	ft_drawing.c ft_maps.c ft_colors.c
 endif
 
 ifeq ($(USE_MATH),TRUE)

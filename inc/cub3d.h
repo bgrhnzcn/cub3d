@@ -10,6 +10,7 @@
 
 # define HEIGHT 640
 # define WIDTH 640
+# define PLAYER_RAD 6
 
 typedef struct s_tile_map
 {
@@ -21,6 +22,7 @@ typedef struct s_tile_map
 typedef struct s_player
 {
 	t_vec2	pos;
+	t_vec2	dir;
 }	t_player;
 
 typedef struct s_game
@@ -36,5 +38,7 @@ char	*mlx_get_mlx_addr(void *img_ptr, int *bits_per_pixel,
 	int *size_line, int *endian);
 
 # endif
+
+void	ft_draw_line(t_mlx *dt, t_vec2 pt1, t_vec2 pt2, t_color color);
 
 #endif
