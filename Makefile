@@ -17,7 +17,8 @@ MLX_FLAGS_MAC = lib/macmlx/libmlx.a lib/libft/libft.a \
 	lib/get_next_line/get_next_line.a -Bdynamic -framework OpenGL \
 	-framework AppKit
 
-SRC = src/cub3d.c src/ft_bresenham_line.c
+SRC = src/cub3d.c src/ft_bresenham_line.c src/draw.c src/update.c src/init.c \
+	src/controller.c src/raycast.c
 
 ifeq ($(shell uname),Linux)
 	MLX_FLAGS = $(MLX_FLAGS_LINUX)
