@@ -11,7 +11,7 @@ SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 	ft_vector_new.c ft_vector_free.c ft_vector_grow.c ft_vector_shrink.c \
 	ft_vector_len.c ft_vector_append.c ft_vector_insert.c ft_vector_pop.c \
 	ft_vector_remove.c ft_vector_head.c ft_string_new.c ft_string_cat.c \
-	ft_string_free.c ft_hash.c ft_strequ.c
+	ft_string_free.c ft_hash.c ft_strequ.c ft_swap.c
 
 
 ifeq ($(USE_MATH),TRUE)

@@ -8,16 +8,25 @@
 # include "get_next_line_bonus.h"
 # include "libft.h"
 
-# define HEIGHT 640
-# define WIDTH 640
-# define TILE_SIZE 64
-# define PLAYER_RAD 6
+# define HEIGHT			640
+# define WIDTH			640
+# define TILE_SIZE		64
+# define PLAYER_RAD		6
+
+typedef union u_vec2i
+{
+	struct
+	{
+		int	x;
+		int	y;
+	};
+	int	data[2];
+}	t_vec2i;
 
 typedef struct s_tile_map
 {
-	char	**tiles;
-	int		map_size_x : 10;
-	int		map_size_y : 10;
+	char	*tiles;
+	t_vec2i	size;
 }	t_tile_map;
 
 typedef struct s_player
@@ -28,26 +37,44 @@ typedef struct s_player
 	t_vec2	dir;
 }	t_player;
 
+typedef enum e_face
+{
+	north,
+	west,
+	south,
+	east
+}	t_face;
+
+typedef struct s_hit
+{
+	t_vec2	pos;
+	t_face	face;
+}	t_hit;
+
 typedef struct s_game
 {
 	t_mlx		mlx;
+	t_mlx		debug;
 	t_player	player;
 	t_tile_map	map;
+	t_img		tex_north;
+	t_img		tex_west;
+	t_img		tex_south;
+	t_img		tex_east;
+	t_hit		*collisions;
+	float		*coll_deg;
+	int			coll_count;
 }	t_game;
 
 typedef struct s_raycast
 {
-	int			ray_cell_x;
-	int			ray_cell_y;
-	int			step_x;
-	int			step_y;
-	t_vec2		delta;
-	t_vec2		ray_dir;
-	t_vec2		len;
-	t_player	player;
-	t_bool		is_wall;
+	float	x;
+	float	y;
+	int		offset;
+	int		step;
+	float	dist;
+	t_hit	hit;
 }	t_raycast;
-
 
 # ifdef __linux__
 
@@ -57,10 +84,17 @@ char	*mlx_get_mlx_addr(void *img_ptr, int *bits_per_pixel,
 # endif
 
 //---------------------- Raycast --------------------------
-t_vec2	raycast(t_game *cub3d);
+void	raycast(t_game *cub3d, t_vec2 start, t_vec2 dir, t_hit *out);
 
 //---------------------- Init --------------------------
+
+void	init_game(t_game *cub3d);
 void	init_player(t_game *cub3d);
+void	init_map(t_game *cub3d);
+
+//---------------------- Texture --------------------------
+
+void	rotate_index(t_game *cub3d, t_img *tex);
 
 //---------------------- Update --------------------------
 int	update(void *param);
@@ -70,10 +104,13 @@ int	key_input(int keycode, t_game *cub3d);
 void	ft_draw_line(t_mlx *dt, t_vec2 pt1, t_vec2 pt2, t_color color);
 
 //----------------------- Draw -----------------
-void	draw_tile(t_mlx *cub3d, char tile, int x, int y);
+void	draw_tile(t_img *debug, char tile, int x, int y);
 void	draw_map(t_game *cub3d);
 void	draw_rays(t_game *cub3d);
 void	draw_player(t_game *cub3d);
+void	debug_point(t_img *img, t_vec2 point);
+void	draw_background(t_game *cub3d);
+void	draw_walls(t_game *cub3d);
 
 //----------------------- Controller -----------------
 void	player_movement(t_game *cub3d, int keycode);

@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:20:27 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/09 01:37:07 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/06/17 17:44:02 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ t_bool		ft_strcheck(char *str, t_bool (*cond)(int));
 int			ft_atoi(const char *str);
 int			ft_atoi_hex(const char *str);
 char		*ft_itoa(int n);
+void		ft_swap_int(int *a, int *b);
 char		**ft_split(char const *s, char c);
 
 //----------------------Memory-----------------------
@@ -329,17 +330,17 @@ t_vec4		ft_vec4_div(t_vec4 vec, float div);
 
 t_vec2		ft_vec2_norm(t_vec2 vec);
 t_vec2		ft_vec2_inv(t_vec2 vec);
-t_vec2		ft_vec2_rot(t_vec2 vec, int deg);
+t_vec2		ft_vec2_rot(t_vec2 vec, float deg);
 
 float		ft_vec2_dot(t_vec2 vec1, t_vec2 vec2);
-float		ft_get_dist2(t_vec2 point1, t_vec2 point);
+float		ft_vec2_dist(t_vec2 point1, t_vec2 point);
 float		ft_vec2_mag(t_vec2 vec);
 
 t_vec3		ft_vec3_norm(t_vec3 vec);
 t_vec3		ft_vec3_cross(t_vec3 vec1, t_vec3 vec2);
 
 float		ft_vec3_dot(t_vec3 vec1, t_vec3 vec2);
-float		ft_get_dist3(t_vec3 point1, t_vec3 point);
+float		ft_vec3_dist(t_vec3 point1, t_vec3 point);
 float		ft_vec3_mag(t_vec3 vec);
 
 t_vec4		ft_vec4_norm(t_vec4 vec);
@@ -386,6 +387,6 @@ t_gradient	ft_inv_gradient(t_gradient in);
 
 void	ft_put_pixel(t_img *img, int x, int y, t_color color);
 
-void	ft_fill_img(t_mlx *data, t_color color);
+void	ft_fill_img(t_win *win, t_img *img, t_color color);
 
 #endif

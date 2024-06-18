@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 13:32:30 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/09 01:36:04 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/06/16 00:34:19 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vec2	ft_vec2_norm(t_vec2 vec)
 	return (ft_vec2_div(vec, ft_vec2_mag(vec)));
 }
 
-t_vec2	ft_vec2_rot(t_vec2 vec, int deg)
+t_vec2	ft_vec2_rot(t_vec2 vec, float deg)
 {
 	t_vec2	res;
 	float	rad;

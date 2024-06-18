@@ -22,14 +22,16 @@ float	ft_vec2_dot(t_vec2 vec1, t_vec2 vec2)
 	return (res);
 }
 
-float	ft_get_dist2(t_vec2 point1, t_vec2 point2)
+#include <stdio.h>
+
+float	ft_vec2_dist(t_vec2 point1, t_vec2 point2)
 {
 	float	dist_x;
 	float	dist_y;
 
 	dist_x = fabs(point1.x - point2.x);
 	dist_y = fabs(point1.y - point2.y);
-	return (sqrt(pow(dist_x, 2) * pow(dist_y, 2)));
+	return (sqrt(pow(dist_x, 2) + pow(dist_y, 2)));
 }
 
 float	ft_vec2_mag(t_vec2 vec)
@@ -38,5 +40,5 @@ float	ft_vec2_mag(t_vec2 vec)
 
 	vec_null.x = 0;
 	vec_null.y = 0;
-	return (ft_get_dist2(vec_null, vec));
+	return (ft_vec2_dist(vec_null, vec));
 }

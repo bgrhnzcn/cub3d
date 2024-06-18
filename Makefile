@@ -8,7 +8,7 @@ NAME = cub3d
 
 CC = gcc
 
-CFLAGS = -g -Wall -Werror -Wextra
+CFLAGS = -g -Wall -Wextra
 
 MLX_FLAGS_LINUX = lib/get_next_line/get_next_line.a lib/libft/libft.a \
 	lib/linuxmlx/libmlx.a -Bdynamic -L/usr/lib/X11 -lXext -lX11 -lm
@@ -18,7 +18,7 @@ MLX_FLAGS_MAC = lib/macmlx/libmlx.a lib/libft/libft.a \
 	-framework AppKit
 
 SRC = src/cub3d.c src/ft_bresenham_line.c src/draw.c src/update.c src/init.c \
-	src/controller.c src/raycast.c
+	src/controller.c src/raycast.c src/texture.c
 
 ifeq ($(shell uname),Linux)
 	MLX_FLAGS = $(MLX_FLAGS_LINUX)
