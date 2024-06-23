@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:34:50 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/17 16:57:00 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/06/20 22:01:53 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,7 +186,7 @@ typedef struct s_mesh
 typedef struct s_img
 {
 	void	*img;
-	char	*data;
+	t_color	*data;
 	int		bits_per_pixel;
 	int		size_line;
 	int		line_count;

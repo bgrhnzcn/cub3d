@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 21:20:28 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/08 21:34:00 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/06/22 01:48:11 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,16 @@
 #  define P_KEY 35
 
 # endif
+
+typedef enum e_mlx_event
+{
+	KeyPress = 2,
+	KeyRelease = 3,
+	ButtonPress = 4,
+	ButtonRelease = 5,
+	MotionNotify = 6,
+	Expose = 12,
+	Destroy = 17
+}	t_mlx_event;
 
 #endif

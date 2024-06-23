@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:40 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/15 12:36:06 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/06/20 22:03:20 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,7 @@
 
 void	ft_put_pixel(t_img *img, int x, int y, t_color color)
 {
-	char	*point;
-
-	point = (img->data) + ((img->bits_per_pixel / 8) * x)
-		+ (img->size_line * y);
-	*(unsigned int *)point = color.value;
+	img->data[x + (img->size_line * y)] = color;
 }
 
 void	ft_fill_img(t_win *win, t_img *img, t_color color)

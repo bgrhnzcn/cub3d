@@ -6,13 +6,13 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:34:37 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/17 21:23:11 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/06/23 14:22:31 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static	*update_rays(t_game *cub3d)
+static void	update_rays(t_game *cub3d)
 {
 	int		i;
 	float	deg;
@@ -37,41 +37,45 @@ static	*update_rays(t_game *cub3d)
 	}
 }
 
-static void	update_debug(t_game *cub3d)
+void	update_player(t_game *cub3d)
 {
-	ft_fill_img(&cub3d->debug.win, &cub3d->debug.img, g_black);
-	draw_map(cub3d);
-	draw_rays(cub3d);
-	draw_player(cub3d);
-	mlx_put_image_to_window(cub3d->mlx.mlx, cub3d->debug.win.win,
-		cub3d->debug.img.img, 0, 0);
+	t_vec2	move_dir;
+	t_bool	rotate_dir;
+	t_input	inputs;
+
+	inputs = cub3d->inputs;
+	move_dir = ft_vec2_norm((t_vec2){.x = inputs.a_key + inputs.d_key,
+		.y = inputs.w_key + inputs.s_key});
+	move_dir = ft_vec2_rot(move_dir,
+		ft_rad_to_deg(-atan2(cub3d->player.dir.x, cub3d->player.dir.y)));
+	move_dir = ft_vec2_inv(move_dir);
+	ft_draw_line(&cub3d->debug, ft_vec2_mul(cub3d->player.pos, TILE_SIZE),
+		ft_vec2_mul(ft_vec2_add(cub3d->player.pos, move_dir), TILE_SIZE),
+		g_magenta);
+	rotate_dir = inputs.left_key + inputs.right_key;
+	player_movement(cub3d, move_dir);
+	player_camera(cub3d, rotate_dir);
 }
 
 int	update(void *param)
 {
 	t_game	*cub3d;
-	t_vec2	mouse_pos;
 
 	cub3d = (t_game *)param;
 	update_rays(cub3d);
+	
+	#if DEBUG == 1
+
 	update_debug(cub3d);
+	
+	#endif
+
+	update_player(cub3d);
 	draw_background(cub3d);
 	draw_walls(cub3d);
-	mlx_mouse_get_pos(cub3d->mlx.mlx, cub3d->mlx.win.win, (int *)&mouse_pos.x, (int *)&mouse_pos.y);
 	mlx_put_image_to_window(cub3d->mlx.mlx, cub3d->mlx.win.win,
 		cub3d->mlx.img.img, 0, 0);
-	mlx_put_image_to_window(cub3d->mlx.mlx, cub3d->mlx.win.win,
-		cub3d->tex_north.img, 0, 0);
 	free(cub3d->collisions);
 	free(cub3d->coll_deg);
-	return (0);
-}
-
-int	key_input(int keycode, t_game *cub3d)
-{
-	if (keycode == ESC_KEY)
-		exit(EXIT_SUCCESS);
-	player_camera(cub3d, keycode);
-	player_movement(cub3d, keycode);
 	return (0);
 }

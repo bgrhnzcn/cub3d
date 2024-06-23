@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:20:27 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/17 17:44:02 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/06/21 19:10:51 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 
 # ifdef USE_MATH
 #  define PI		3.14159265358979323846
+#  define EPSILON	1e-3;
 # endif
 
 void		*ft_bzero(void *s, size_t n);
@@ -58,7 +59,7 @@ void		*ft_memchr(const void *s, int c, size_t n);
  * @param s1 
  * @param s2 
  * @param n 
- * @return int 
+ * @return int
  */
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 /**

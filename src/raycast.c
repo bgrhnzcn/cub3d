@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:30:32 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/16 21:53:27 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/06/20 23:11:19 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static t_vec2	hit_vert(t_game *cub3d, t_vec2 start, t_vec2 dir, float *dist)
 		if (*dist >= 100)
 			return (start);
 		if (ray.y >= 0 && ray.y < cub3d->map.size.y)
-			if (cub3d->map.tiles[(int)(ray.x + ray.offset) + ((int)ray.y * cub3d->map.size.x)] == '1')
+			if (cub3d->map.tiles[(int)(ray.x + ray.offset) +
+				((int)ray.y * cub3d->map.size.x)] == '1')
 				return (ray.hit.pos);
 		ray.x += ray.step;
 	}
