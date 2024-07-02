@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:34:37 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/23 14:22:31 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/03 01:08:06 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,16 @@ void	update_player(t_game *cub3d)
 
 int	update(void *param)
 {
+	static float	last_time = 0;
+	float	curr_time;
 	t_game	*cub3d;
 
 	cub3d = (t_game *)param;
+	curr_time = (float)clock() / CLOCKS_PER_SEC;
+	cub3d->delta_time = curr_time - last_time;
+	last_time = curr_time;
+	printf("delta_time: %f\n", cub3d->delta_time);
+	update_player(cub3d);
 	update_rays(cub3d);
 	
 	#if DEBUG == 1
@@ -70,7 +77,6 @@ int	update(void *param)
 	
 	#endif
 
-	update_player(cub3d);
 	draw_background(cub3d);
 	draw_walls(cub3d);
 	mlx_put_image_to_window(cub3d->mlx.mlx, cub3d->mlx.win.win,

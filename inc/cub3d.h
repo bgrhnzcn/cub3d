@@ -1,6 +1,7 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include <time.h>
 # include <math.h>
 # include <stdio.h>
 # include <fcntl.h>
@@ -75,6 +76,7 @@ typedef struct s_game
 	t_img		tex_east;
 	t_hit		*collisions;
 	float		*coll_deg;
+	float		delta_time;
 	int			coll_count;
 }	t_game;
 

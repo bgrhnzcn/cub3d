@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 21:20:28 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/22 01:48:11 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/03 01:15:50 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,19 @@
 #  define X_KEY 7
 #  define Z_KEY 6
 #  define O_KEY 31
+#  define Q_KEY 12
+#  define W_KEY 13
+#  define E_KEY 14
+#  define R_KEY 15
+#  define A_KEY 0
+#  define S_KEY 1
+#  define D_KEY 2
+#  define F_KEY 3
 #  define P_KEY 35
+#  define RIGHT_KEY 124
+#  define LEFT_KEY 123
+#  define UP_KEY 126
+#  define DOWN_KEY 125
 
 # endif
 

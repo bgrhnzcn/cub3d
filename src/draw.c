@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:27:56 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/23 12:53:21 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/03 01:17:09 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -205,7 +205,6 @@ void	draw_wall_piece(t_game *cub3d, float line_height, int index, t_face face)
 			(int)cub3d->collisions[index].pos.y;
 		draw_east(cub3d, line_height, index, tex_x);
 	}
-
 }
 
 void	draw_walls(t_game *cub3d)

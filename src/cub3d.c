@@ -6,18 +6,20 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:53:18 by buozcan           #+#    #+#             */
-/*   Updated: 2024/06/22 12:45:37 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/03 01:15:46 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+#ifdef __linux__
 char	*mlx_get_mlx_addr(void *img_ptr, int *bits_per_pixel,
 	int *size_line, int *endian)
 {
 	return (mlx_get_data_addr(img_ptr, bits_per_pixel, size_line,
 		endian));
 }
+#endif
 
 int	main(int argc, char **argv)
 {

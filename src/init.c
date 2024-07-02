@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:36:34 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/23 14:39:04 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/03 01:10:56 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	init_player(t_game *cub3d)
 	cub3d->player.pos.y = 5.5;
 	cub3d->player.dir.x = 0;
 	cub3d->player.dir.y = 1;
-	cub3d->player.move_speed = 0.05;
-	cub3d->player.camera_speed = 0.6;
+	cub3d->player.move_speed = 10;
+	cub3d->player.camera_speed = 100;
 }
 
 void	init_map(t_game *cub3d)
