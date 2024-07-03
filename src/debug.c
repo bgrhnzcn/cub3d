@@ -6,7 +6,7 @@
 /*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 12:52:19 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/03 16:25:54 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/07/03 18:06:13 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	init_debug(t_game *cub3d)
 		WIDTH, HEIGHT, "cub3d - map");
 	cub3d->debug.img.img = mlx_new_image(cub3d->mlx.mlx,
 		cub3d->mlx.win.width, cub3d->mlx.win.height);
-	cub3d->debug.img.data = (t_color *)mlx_get_mlx_addr(cub3d->debug.img.img,
+	cub3d->debug.img.data = (t_color *)mlx_get_data_addr(cub3d->debug.img.img,
 		&cub3d->debug.img.bits_per_pixel,
 		&cub3d->debug.img.size_line, &cub3d->debug.img.endian);
 	cub3d->debug.img.size_line /= 4;

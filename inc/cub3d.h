@@ -96,13 +96,6 @@ typedef struct s_raycast
 	t_hit	hit;
 }	t_raycast;
 
-# ifdef __linux__
-
-char	*mlx_get_mlx_addr(void *img_ptr, int *bits_per_pixel,
-	int *size_line, int *endian);
-
-# endif
-
 //---------------------- Debug --------------------------
 
 void	init_debug(t_game *cub3d);
