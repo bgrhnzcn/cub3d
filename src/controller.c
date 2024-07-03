@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controller.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:31:37 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/03 01:08:46 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:24:34 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	key_press_handler(int keycode, t_game *cub3d)
 {
-	printf("key pressed: %d\n", keycode);
 	if (keycode == W_KEY)
 		cub3d->inputs.w_key = -1;
 	if (keycode == A_KEY)
@@ -28,13 +27,15 @@ int	key_press_handler(int keycode, t_game *cub3d)
 	if (keycode == RIGHT_KEY)
 		cub3d->inputs.right_key = 1;
 	if (keycode == ESC_KEY)
+	{
+		remove_logger(cub3d->log.frame_log);
 		exit(EXIT_SUCCESS);
+	}
 	return (0);
 }
 
 int	key_release_handler(int keycode, t_game *cub3d)
 {
-	printf("key released: %d\n", keycode);
 	if (keycode == W_KEY)
 		cub3d->inputs.w_key = 0;
 	if (keycode == A_KEY)

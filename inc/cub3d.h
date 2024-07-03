@@ -63,6 +63,11 @@ typedef struct s_input
 	t_bool	esc_key;
 }	t_input;
 
+typedef struct s_logger
+{
+	FILE	*frame_log;
+}	t_logger;
+
 typedef struct s_game
 {
 	t_mlx		mlx;
@@ -75,8 +80,9 @@ typedef struct s_game
 	t_img		tex_south;
 	t_img		tex_east;
 	t_hit		*collisions;
+	t_logger	log;
 	float		*coll_deg;
-	float		delta_time;
+	double		delta_time;
 	int			coll_count;
 }	t_game;
 
@@ -106,6 +112,9 @@ void	draw_rays(t_game *cub3d);
 void	draw_player(t_game *cub3d);
 void	debug_point(t_img *img, t_vec2 point);
 void	update_debug(t_game *cub3d);
+FILE	*create_logger(char *log_name);
+void	remove_logger(FILE *fd);
+void	debug_log(t_game *cub3d, FILE *fd);
 
 //---------------------- Raycast --------------------------
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:34:37 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/03 01:08:06 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:25:38 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,13 @@ void	update_player(t_game *cub3d)
 
 int	update(void *param)
 {
-	static float	last_time = 0;
-	float	curr_time;
+	static double	last_time = 0;
+	double	curr_time;
 	t_game	*cub3d;
 
 	cub3d = (t_game *)param;
-	curr_time = (float)clock() / CLOCKS_PER_SEC;
-	cub3d->delta_time = curr_time - last_time;
+	curr_time = clock();
+	cub3d->delta_time = (double)(curr_time - last_time) / CLOCKS_PER_SEC;
 	last_time = curr_time;
 	printf("delta_time: %f\n", cub3d->delta_time);
 	update_player(cub3d);
@@ -81,6 +81,9 @@ int	update(void *param)
 	draw_walls(cub3d);
 	mlx_put_image_to_window(cub3d->mlx.mlx, cub3d->mlx.win.win,
 		cub3d->mlx.img.img, 0, 0);
+	mlx_string_put(cub3d->mlx.mlx, cub3d->mlx.win.win, 20, 20, g_magenta.value,
+		ft_itoa((int)(1 / cub3d->delta_time)));
+	debug_log(cub3d, cub3d->log.frame_log);
 	free(cub3d->collisions);
 	free(cub3d->coll_deg);
 	return (0);

@@ -51,3 +51,5 @@ Module.symvers
 Mkfile.old
 dkms.conf
 .vscode/
+logs/
+cub3d

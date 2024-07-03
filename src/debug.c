@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 12:52:19 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/23 14:02:52 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:25:54 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,4 +105,25 @@ void	update_debug(t_game *cub3d)
 	draw_player(cub3d);
 	mlx_put_image_to_window(cub3d->mlx.mlx, cub3d->debug.win.win,
 		cub3d->debug.img.img, 0, 0);
+}
+
+FILE	*create_logger(char *log_name)
+{
+	FILE	*fd;
+	char	log_path[100] = "./logs/";
+
+	ft_strlcat(&log_path, log_name, 100);
+	fd = fopen(log_path, "a");
+	return (fd);
+}
+
+void	remove_logger(FILE *fd)
+{
+	fclose(fd);
+}
+
+void	debug_log(t_game *cub3d, FILE *fd)
+{
+	fprintf(fd, "FrameRate: %d",
+		(int)(1 / cub3d->delta_time));
 }

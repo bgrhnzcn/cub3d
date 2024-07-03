@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:53:18 by buozcan           #+#    #+#             */
-/*   Updated: 2024/07/03 01:15:46 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/03 16:24:24 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 
 	(void)argc;
 	(void)argv;
+	cub3d.log.frame_log = create_logger("frame_per_sec.log");
 	init_game(&cub3d);
 	mlx_hook(cub3d.mlx.win.win, KeyPress, (1<<0), key_press_handler, &cub3d);
 	mlx_hook(cub3d.mlx.win.win, KeyRelease, (1<<1), key_release_handler, &cub3d);
