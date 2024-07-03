@@ -41,6 +41,7 @@
 *.su
 *.idb
 *.pdb
+*.log
 
 # Kernel Module Compile Results
 *.mod*
@@ -51,5 +52,4 @@ Module.symvers
 Mkfile.old
 dkms.conf
 .vscode/
-logs/*
 cub3d
