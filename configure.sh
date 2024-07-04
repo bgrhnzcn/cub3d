@@ -1,3 +1,4 @@
+trash="/dev/null"
 if [ ! -d "./lib/mlx" ]; then
 	if [ "$1" = "Linux" ]; then
 		echo "Downloading MiniLibx For Linux..."
@@ -7,10 +8,10 @@ if [ ! -d "./lib/mlx" ]; then
 		curl -s https://cdn.intra.42.fr/document/document/18344/minilibx_opengl.tgz -o ./lib/mlx.tgz
 	fi
 	mkdir ./lib/mlx
-	tar xvfz ./lib/mlx.tgz --strip 1 -C ./lib/mlx > /dev/null
+	tar xvfz ./lib/mlx.tgz --strip 1 -C ./lib/mlx > $trash
 	rm ./lib/mlx.tgz
 fi
 if [ ! -f "./lib/mlx/libmlx.a" ]; then
 	echo "Compiling MiniLibx..."
-	cd ./lib/mlx && make > /dev/null 2> /dev/null
+	cd ./lib/mlx && make > $trash 2> $trash
 fi
