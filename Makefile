@@ -25,36 +25,29 @@ UNAME = $(shell uname)
 ifeq ($(UNAME), Linux)
 	MLX_FLAGS = $(MLX_FLAGS_LINUX)
 	CFLAGS += $(INCLUDES_LINUX)
+	MLX_VERSION = lib/linuxmlx
 else
 	MLX_FLAGS = $(MLX_FLAGS_MAC)
 	CFLAGS += $(INCLUDES_MAC)
+	MLX_VERSION = lib/macmlx
 endif
-
-HAS_MLX = $(shell ./check_mlx.sh)
 
 OBJ = $(SRC:.c=.o)
 
 $(NAME): lib $(OBJ)
 	@echo "Compiling CUB3D..."
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX_FLAGS)
-	@echo $(HAS_MLX)
-	@if [ "$(HAS_MLX)" == "true" ]; then \
-		echo "\033[5A\033[53DBuilding CUB3D[####################################]\033[4B"; \
-	else \
-		echo "\033[8A\033[53DBuilding CUB3D[####################################]\033[7B"; \
-	fi
 
 all: $(NAME)
 
 lib:
-	@echo "Building CUB3D[------------------------------------]"
 	@echo "Compiling Libft..."
 	@cd lib/libft && make USE_MATH=TRUE &> /dev/null
-	@echo "\033[2A\033[53DBuilding CUB3D[########----------------------------]\033[1B"
 	@echo "Compiling get_next_line..."
 	@cd lib/get_next_line && make &> /dev/null
-	@echo "\033[3A\033[53DBuilding CUB3D[###########-------------------------]\033[2B"
 	@./configure.sh "$(UNAME)"
+	@echo "Compiling MiniLibx For MacOS..."
+	@cd $(MLX_VERSION) && make &> /dev/null
 
 fclean: clean
 	@rm -f $(NAME)
@@ -63,11 +56,7 @@ clean:
 	@rm -f src/*.o
 	@cd lib/libft && make fclean &> /dev/null
 	@cd lib/get_next_line && make fclean &> /dev/null
-	@if [[ "$(UNAME)" == "Linux" ]]; then \
-		cd lib/linuxmlx && make clean &> /dev/null; \
-	else \
-		cd lib/macmlx && make clean &> /dev/null; \
-	fi
+	@cd $(MLX_VERSION) && make clean &> /dev/null
 	@echo "All unnecessery files cleared."
 re: fclean all
 
