@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 12:52:19 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/03 18:06:13 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/07/05 00:25:12 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,11 +119,13 @@ FILE	*create_logger(char *log_name)
 
 void	remove_logger(FILE *fd)
 {
-	fclose(fd);
+	if (fd != NULL)
+		fclose(fd);
 }
 
 void	debug_log(t_game *cub3d, FILE *fd)
 {
-	fprintf(fd, "FrameRate: %d",
-		(int)(1 / cub3d->delta_time));
+	if (fd != NULL)
+		fprintf(fd, "FrameRate: %d",
+			(int)(1 / cub3d->delta_time));
 }
