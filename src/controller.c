@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   controller.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:31:37 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/03 18:57:34 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/07/06 18:52:01 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,11 @@ int	key_press_handler(int keycode, t_game *cub3d)
 		cub3d->inputs.right_key = 1;
 	if (keycode == ESC_KEY)
 	{
+		#if DEBUG == 1
+		
 		remove_logger(cub3d->log.frame_log);
+		
+		#endif
 		exit(EXIT_SUCCESS);
 	}
 	return (0);

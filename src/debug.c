@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 12:52:19 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/05 00:25:12 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/05 18:52:46 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,16 @@ void	update_debug(t_game *cub3d)
 FILE	*create_logger(char *log_name)
 {
 	FILE	*fd;
-	char	log_path[100] = "./logs/";
-
-	ft_strlcat(&log_path, log_name, 100);
-	fd = fopen(log_path, "a");
+	char	log_path[100] = "./log/";
+	char *	time_stamp;
+	struct	tm *asd;
+	
+	asd = localtime(&(time_t){time(NULL)});
+	time_stamp = asctime(asd);
+	ft_strlcat(log_path, log_name, 100);
+	ft_strlcat(log_path, "-", 100);
+	ft_strlcat(log_path, time_stamp, 100);
+	fd = fopen(log_path, "w");
 	return (fd);
 }
 
@@ -125,7 +131,11 @@ void	remove_logger(FILE *fd)
 
 void	debug_log(t_game *cub3d, FILE *fd)
 {
-	if (fd != NULL)
-		fprintf(fd, "FrameRate: %d",
+	if (fd == NULL)
+		printf("Can't access file no: %d. \
+			Please check the file is exist and have proper permisions\n",
+			fd->_fileno);
+	else
+		fprintf(fd, "FrameRate: %d\n",
 			(int)(1 / cub3d->delta_time));
 }

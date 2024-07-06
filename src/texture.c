@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 16:23:37 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/22 02:10:11 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/06 19:01:02 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	rotate_index(t_img *tex)
 		j = i;
 		while (j < tex->line_count)
 		{
-			ft_swap_int(&(tex->data[j + (tex->size_line * i)].value),
-				&(tex->data[i + (tex->line_count * j)].value));
+			ft_swap_int((int *)(&(tex->data[j + (tex->size_line * i)].value)),
+				(int *)(&(tex->data[i + (tex->line_count * j)].value)));
 			j++;
 		}
 		i++;
@@ -42,8 +42,8 @@ void	mirror_tex(t_img *tex)
 		i = 0;
 		while (i < tex->line_count / 2)
 		{
-			ft_swap_int(&tex->data[j + (i * tex->size_line)].value,
-				&tex->data[j + ((tex->size_line - i - 1) * tex->size_line)].value);
+			ft_swap_int((int *)(&tex->data[j + (i * tex->size_line)].value),
+				(int *)(&tex->data[j + ((tex->size_line - i - 1) * tex->size_line)].value));
 			printf("i: %d, j: %d\n", i, j);
 			i++;
 		}

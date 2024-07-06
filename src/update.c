@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:34:37 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/05 00:34:17 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/05 18:31:18 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	update(void *param)
 	#if DEBUG == 1
 
 	update_debug(cub3d);
+	debug_log(cub3d, cub3d->log.frame_log);
 	
 	#endif
 
@@ -85,7 +86,6 @@ int	update(void *param)
 	frame_rate = ft_itoa((int)(1 / cub3d->delta_time));
 	mlx_string_put(cub3d->mlx.mlx, cub3d->mlx.win.win, 20, 20, g_magenta.value,
 		frame_rate);
-	debug_log(cub3d, cub3d->log.frame_log);
 	free(frame_rate);
 	free(cub3d->collisions);
 	free(cub3d->coll_deg);

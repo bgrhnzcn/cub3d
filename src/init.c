@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:36:34 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/03 18:05:44 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/07/06 18:50:48 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	init_game(t_game *cub3d)
 	#if DEBUG == 1
 	
 	init_debug(cub3d);
+	cub3d->log.frame_log = create_logger("frame_per_sec.log");
 	
 	#endif
 	

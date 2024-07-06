@@ -1,5 +1,5 @@
 trash="/dev/null"
-if [ ! -d "./lib/mlx" ]; then
+if [ ! -d "./lib/mlx" ] && [ "$2" != "clean" ]; then
 	if [ "$1" = "Linux" ]; then
 		echo "Downloading MiniLibx For Linux..."
 		curl -s https://cdn.intra.42.fr/document/document/18343/minilibx-linux.tgz -o ./lib/mlx.tgz
@@ -13,5 +13,5 @@ if [ ! -d "./lib/mlx" ]; then
 fi
 if [ ! -f "./lib/mlx/libmlx.a" ]; then
 	echo "Compiling MiniLibx..."
-	cd ./lib/mlx && make > $trash 2> $trash
+	make -C ./lib/mlx > $trash 2> $trash
 fi
