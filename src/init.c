@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:36:34 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/06 18:50:48 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/07 19:51:23 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	init_game(t_game *cub3d)
 		cub3d->mlx.img.size_line /= 4;
 	init_tex(cub3d, &cub3d->tex_south, "textures/Icon6.xpm");
 	init_tex(cub3d, &cub3d->tex_west, "textures/Icon16.xpm");
-	init_tex(cub3d, &cub3d->tex_north, "textures/Icon2.xpm");
+	init_tex(cub3d, &cub3d->tex_north, "textures/epic.xpm");
 	mirror_tex(&cub3d->tex_north);
 	init_tex(cub3d, &cub3d->tex_east, "textures/Icon10.xpm");
 	mirror_tex(&cub3d->tex_east);

@@ -31,7 +31,7 @@ float	ft_vec2_dist(t_vec2 point1, t_vec2 point2)
 
 	dist_x = fabs(point1.x - point2.x);
 	dist_y = fabs(point1.y - point2.y);
-	return (sqrt(pow(dist_x, 2) + pow(dist_y, 2)));
+	return (sqrtf(powf(dist_x, 2) + powf(dist_y, 2)));
 }
 
 float	ft_vec2_mag(t_vec2 vec)

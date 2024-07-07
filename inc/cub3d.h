@@ -13,6 +13,7 @@
 # define WIDTH			640
 # define TILE_SIZE		32
 # define PLAYER_RAD		6
+# define PLAYER_SIZE	0.2
 
 typedef union u_vec2i
 {

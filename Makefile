@@ -14,7 +14,7 @@ INCLUDES_LINUX = -I./lib/mlx -I./lib/get_next_line \
 INCLUDES_MAC = -I./lib/mlx -I./lib/get_next_line \
 	-I./lib/libft -I./inc
 
-CFLAGS = -g -Wall -Wextra -Werror -fsanitize=address -D DEBUG=1
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address $(DEBUG)
 
 MLX_FLAGS_LINUX = $(GNL) $(LIBFT) $(MLX) -Bdynamic -L/usr/lib/X11 \
 	-lXext -lX11 -lm
@@ -57,10 +57,10 @@ $(MLX):
 			curl -s https://cdn.intra.42.fr/document/document/18343/minilibx-linux.tgz -o ./lib/mlx.tgz;\
 		else\
 			echo "Downloadig MiniLibx For MacOS...";\
-			curl -s https://cdn.intra.42.fr/document/document/18344/minilibx_opengl.tgz -o ./lib/mlx.tg;\
+			curl -s https://cdn.intra.42.fr/document/document/18344/minilibx_opengl.tgz -o ./lib/mlx.tgz;\
 		fi;\
 		mkdir ./lib/mlx;\
-		tar xvfz ./lib/mlx.tgz --strip 1 -C ./lib/mlx > /dev/null;\
+		tar xvfz ./lib/mlx.tgz --strip 1 -C ./lib/mlx > /dev/null 2> /dev/null;\
 		rm ./lib/mlx.tgz;\
 	fi;\
 	if [ ! -f "./lib/mlx/libmlx.a" ]; then\
@@ -89,7 +89,10 @@ clean:
 	@echo "All unnecessery files cleared."
 re: fclean all
 
-run: re
+debug:
+	@make all DEBUG="-g -D DEBUG=1"
+
+run: all
 	./$(NAME)
 
 .PHONY: all re fclean clean lib run
