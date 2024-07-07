@@ -9,9 +9,9 @@
 # include "get_next_line_bonus.h"
 # include "libft.h"
 
-# define HEIGHT			640
-# define WIDTH			640
-# define TILE_SIZE		32
+# define HEIGHT			800
+# define WIDTH			800
+# define TILE_SIZE		40
 # define PLAYER_RAD		6
 # define PLAYER_SIZE	0.2
 
@@ -97,6 +97,15 @@ typedef struct s_raycast
 	t_hit	hit;
 }	t_raycast;
 
+struct s_draw_hlpr
+{
+	t_game	*cub3d;
+	t_img	*tex;
+	float	line_height;
+	float	tex_x;
+	int		index;
+};
+
 //---------------------- Debug --------------------------
 
 void	init_debug(t_game *cub3d);
@@ -106,9 +115,6 @@ void	draw_rays(t_game *cub3d);
 void	draw_player(t_game *cub3d);
 void	debug_point(t_img *img, t_vec2 point);
 void	update_debug(t_game *cub3d);
-FILE	*create_logger(char *log_name);
-void	remove_logger(FILE *fd);
-void	debug_log(t_game *cub3d, FILE *fd);
 
 //---------------------- Raycast --------------------------
 
@@ -117,13 +123,16 @@ void	raycast(t_game *cub3d, t_vec2 start, t_vec2 dir, t_hit *out);
 //---------------------- Init --------------------------
 
 void	init_game(t_game *cub3d);
-void	init_player(t_game *cub3d);
 void	init_map(t_game *cub3d);
 
 //---------------------- Texture --------------------------
 
 void	rotate_index(t_img *tex);
 void	mirror_tex(t_img *tex);
+float	get_tex_y(t_img *tex, float i, float height);
+void	draw_tex_helper(int *i, float *tex_y,
+	float *full_height, float *line_height);
+t_color	*get_tex_data(t_img *tex, float tex_x);
 
 //---------------------- Update --------------------------
 

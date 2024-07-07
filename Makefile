@@ -1,54 +1,56 @@
 NAME = cub3d
 
+CC = gcc
+
+SRC = src
+
+OBJ = obj
+
+SRCS = $(SRC)/cub3d.c \
+	$(SRC)/ft_bresenham_line.c \
+	$(SRC)/draw.c \
+	$(SRC)/update.c \
+	$(SRC)/init.c \
+	$(SRC)/controller.c \
+	$(SRC)/raycast.c \
+	$(SRC)/texture.c \
+	$(SRC)/debug.c
+
 MLX = lib/mlx/libmlx.a
 
 LIBFT = lib/libft/libft.a
 
 GNL = lib/get_next_line/get_next_line.a
 
-CC = @gcc
-
-INCLUDES_LINUX = -I./lib/mlx -I./lib/get_next_line \
+INCLUDES = -I./lib/mlx -I./lib/get_next_line \
 	-I./lib/libft -I./inc
 
-INCLUDES_MAC = -I./lib/mlx -I./lib/get_next_line \
-	-I./lib/libft -I./inc
-
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address $(DEBUG)
+CFLAGS = -O3 -Wall -Wextra -Werror $(DEBUG)
 
 MLX_FLAGS_LINUX = $(GNL) $(LIBFT) $(MLX) -Bdynamic -L/usr/lib/X11 \
 	-lXext -lX11 -lm
 
-MLX_FLAGS_MAC = $(MLX) $(LIBFT) $(GNL) -Bdynamic -framework OpenGL \
+MLX_FLAGS_MAC = $(GNL) $(LIBFT) $(MLX) -Bdynamic -framework OpenGL \
 	-framework AppKit
-
-SRC = src/cub3d.c \
-	src/ft_bresenham_line.c \
-	src/draw.c \
-	src/update.c \
-	src/init.c \
-	src/controller.c \
-	src/raycast.c \
-	src/texture.c \
-	src/debug.c
 
 UNAME = $(shell uname)
 
 ifeq ($(UNAME), Linux)
 	MLX_FLAGS = $(MLX_FLAGS_LINUX)
-	CFLAGS += $(INCLUDES_LINUX)
 else
 	MLX_FLAGS = $(MLX_FLAGS_MAC)
-	CFLAGS += $(INCLUDES_MAC)
 endif
 
-OBJ = $(SRC:.c=.o)
-
-$(NAME): $(MLX) $(LIBFT) $(GNL) $(OBJ)
-	@echo "Compiling CUB3D..."
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX_FLAGS)
+OBJS = $(SRCS:$(SRC)/%.c=$(OBJ)/%.o)
 
 all: $(NAME)
+
+$(OBJ)/%.o: $(SRC)/%.c
+	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $?
+
+$(NAME): $(OBJS) $(MLX) $(LIBFT) $(GNL)
+	@echo "Compiling CUB3D..."
+	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ $? $(MLX_FLAGS)
 
 $(MLX):
 	@if [ ! -d "./lib/mlx" ]; then\
@@ -80,7 +82,7 @@ fclean: clean
 	@rm -f $(NAME)
 
 clean:
-	@rm -f src/*.o
+	@rm -f $(OBJ)/*.o
 	@make -C lib/libft fclean > /dev/null
 	@make -C lib/get_next_line fclean > /dev/null
 	@if [ -d "./lib/mlx" ]; then\
@@ -90,9 +92,9 @@ clean:
 re: fclean all
 
 debug:
-	@make all DEBUG="-g -D DEBUG=1"
+	@make all DEBUG="-g -fsanitize=address -D DEBUG=1" > /dev/null 2> /dev/null
 
-run: all
+run: $(NAME)
 	./$(NAME)
 
-.PHONY: all re fclean clean lib run
+.PHONY: all re fclean clean run

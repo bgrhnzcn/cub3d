@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:20:27 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/05 15:56:38 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/08 00:39:50 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@
 #  define PI		3.14159265358979323846
 #  define EPSILON	1e-3;
 # endif
+
+static const t_vec2	g_vec2_null = (t_vec2){.x = 0, .y = 0};
+static const t_vec2	g_vec2_i = (t_vec2){.x = 1, .y = 0};
+static const t_vec2	g_vec2_j = (t_vec2){.x = 0, .y = 1};
+
+static const t_vec3	g_vec3_null = (t_vec3){.x = 0, .y = 0, .z = 0};
+static const t_vec3	g_vec3_i = (t_vec3){.x = 1, .y = 0, .z = 0};
+static const t_vec3	g_vec3_j = (t_vec3){.x = 0, .y = 1, .z = 0};
+static const t_vec3	g_vec3_k = (t_vec3){.x = 0, .y = 0, .z = 1};
 
 void		*ft_bzero(void *s, size_t n);
 char		*ft_strdup(const char *s);
