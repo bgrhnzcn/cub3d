@@ -1,0 +1,4 @@
+PARSING:
+
+1-) Başlarında yazana göre pdf'teki halleriyle texture'ların konumunu ve renk kodlarını alma.
+2-) Map'i alırken boşluklara X karakteri koyarak ve en uzun x değeri ve y değerini map.size.x ve map.size.y değerlerine atmak.
