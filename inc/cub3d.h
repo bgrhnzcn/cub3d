@@ -14,6 +14,7 @@
 # define TILE_SIZE		40
 # define PLAYER_RAD		6
 # define PLAYER_SIZE	0.2
+# define MAX_RAY_LENGHT	100
 
 typedef union u_vec2i
 {
@@ -33,10 +34,10 @@ typedef struct s_tile_map
 
 typedef struct s_player
 {
-	t_vec2	pos;
-	t_vec2	dir;
 	float	move_speed;
 	float	camera_speed;
+	t_vec2	pos;
+	t_vec2	dir;
 }	t_player;
 
 typedef enum e_face
@@ -49,8 +50,8 @@ typedef enum e_face
 
 typedef struct s_hit
 {
-	t_vec2	pos;
 	t_face	face;
+	t_vec2	pos;
 }	t_hit;
 
 typedef struct s_input
@@ -64,15 +65,11 @@ typedef struct s_input
 	t_bool	esc_key;
 }	t_input;
 
-typedef struct s_logger
-{
-	FILE	*frame_log;
-}	t_logger;
-
 typedef struct s_game
 {
-	t_mlx		mlx;
-	t_mlx		debug;
+	t_hit		collisions[WIDTH];
+	float		coll_deg[WIDTH];
+	double		delta_time;
 	t_tile_map	map;
 	t_player	player;
 	t_input		inputs;
@@ -80,11 +77,8 @@ typedef struct s_game
 	t_img		tex_west;
 	t_img		tex_south;
 	t_img		tex_east;
-	t_hit		*collisions;
-	t_logger	log;
-	float		*coll_deg;
-	double		delta_time;
-	int			coll_count;
+	t_mlx		mlx;
+	t_mlx		debug;
 }	t_game;
 
 typedef struct s_raycast

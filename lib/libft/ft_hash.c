@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:06:51 by buozcan           #+#    #+#             */
-/*   Updated: 2024/05/09 23:58:37 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/20 20:07:45 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_pow(int base, unsigned int power)
 		base *= base;
 		power--;
 	}
-	return base;
+	return (base);
 }
 
 size_t	ft_hash(void *data, size_t size)

@@ -25,7 +25,7 @@ GNL = lib/get_next_line/get_next_line.a
 INCLUDES = -I./lib/mlx -I./lib/get_next_line \
 	-I./lib/libft -I./inc
 
-CFLAGS = -O3 -Wall -Wextra -Werror $(DEBUG)
+CFLAGS = -Wall -Wextra -Werror $(DEBUG)
 
 MLX_FLAGS_LINUX = $(GNL) $(LIBFT) $(MLX) -Bdynamic -L/usr/lib/X11 \
 	-lXext -lX11 -lm
@@ -97,4 +97,4 @@ debug:
 run: $(NAME)
 	./$(NAME)
 
-.PHONY: all re fclean clean run
+.PHONY: all re fclean clean run debug

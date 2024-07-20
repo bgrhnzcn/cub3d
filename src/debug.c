@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/23 12:52:19 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/08 00:55:04 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/20 20:14:49 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	draw_rays(t_game *cub3d)
 	int	i;
 
 	i = 0;
-	while (i < cub3d->coll_count)
+	while (i < WIDTH)
 	{
 		debug_point(&cub3d->debug.img, cub3d->collisions[i].pos);
 		ft_draw_line(&cub3d->debug,
