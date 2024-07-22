@@ -6,12 +6,12 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 17:56:59 by buozcan           #+#    #+#             */
-/*   Updated: 2024/06/21 23:46:55 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/20 20:12:45 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 void	ft_swap_int(int *a, int *b)
 {
 	if (a == b)

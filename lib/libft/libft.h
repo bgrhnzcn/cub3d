@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:20:27 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/08 00:39:50 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/20 20:12:24 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,23 @@
 # ifdef USE_MATH
 #  include <math.h>
 # endif
-# include "ftstructs.h"
-# include "ftcolors.h"
-# include "ftinputs.h"
+# include "ft_structs.h"
+# include "ft_colors.h"
+# include "ft_inputs.h"
 
 # ifdef USE_MATH
 #  define PI		3.14159265358979323846
-#  define EPSILON	1e-3;
+#  define EPSILON	1e-3
 # endif
 
-static const t_vec2	g_vec2_null = (t_vec2){.x = 0, .y = 0};
-static const t_vec2	g_vec2_i = (t_vec2){.x = 1, .y = 0};
-static const t_vec2	g_vec2_j = (t_vec2){.x = 0, .y = 1};
+static const t_vec2		g_vec2_null = (t_vec2){.x = 0, .y = 0};
+static const t_vec2		g_vec2_i = (t_vec2){.x = 1, .y = 0};
+static const t_vec2		g_vec2_j = (t_vec2){.x = 0, .y = 1};
 
-static const t_vec3	g_vec3_null = (t_vec3){.x = 0, .y = 0, .z = 0};
-static const t_vec3	g_vec3_i = (t_vec3){.x = 1, .y = 0, .z = 0};
-static const t_vec3	g_vec3_j = (t_vec3){.x = 0, .y = 1, .z = 0};
-static const t_vec3	g_vec3_k = (t_vec3){.x = 0, .y = 0, .z = 1};
+static const t_vec3		g_vec3_null = (t_vec3){.x = 0, .y = 0, .z = 0};
+static const t_vec3		g_vec3_i = (t_vec3){.x = 1, .y = 0, .z = 0};
+static const t_vec3		g_vec3_j = (t_vec3){.x = 0, .y = 1, .z = 0};
+static const t_vec3		g_vec3_k = (t_vec3){.x = 0, .y = 0, .z = 1};
 
 void		*ft_bzero(void *s, size_t n);
 char		*ft_strdup(const char *s);
@@ -231,7 +231,7 @@ size_t		ft_string_cat(t_string *dst, char *src);
 
 //-----------------------Hash-------------------------
 
-size_t			ft_hash(void *data, size_t size);
+size_t		ft_hash(void *data, size_t size);
 
 //-----------------------Lists------------------------
 
@@ -345,6 +345,7 @@ t_vec2		ft_vec2_rot(t_vec2 vec, float deg);
 float		ft_vec2_dot(t_vec2 vec1, t_vec2 vec2);
 float		ft_vec2_dist(t_vec2 point1, t_vec2 point);
 float		ft_vec2_mag(t_vec2 vec);
+t_bool		ft_vec2_equ(t_vec2 vec1, t_vec2 vec2);
 
 t_vec3		ft_vec3_norm(t_vec3 vec);
 t_vec3		ft_vec3_cross(t_vec3 vec1, t_vec3 vec2);
@@ -395,8 +396,8 @@ t_gradient	ft_set_gradient(t_color from, t_color to);
 //Gradient inverter.
 t_gradient	ft_inv_gradient(t_gradient in);
 
-void	ft_put_pixel(t_img *img, int x, int y, t_color color);
+void		ft_put_pixel(t_img *img, int x, int y, t_color color);
 
-void	ft_fill_img(t_win *win, t_img *img, t_color color);
+void		ft_fill_img(t_win *win, t_img *img, t_color color);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:30:32 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/08 00:29:28 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/20 15:43:26 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,15 @@ static t_vec2	hit_vert(t_game *cub3d, t_vec2 start, t_vec2 dir, float *dist)
 		ray.y = ((dir.y / dir.x) * (ray.x - start.x)) + start.y;
 		ray.hit.pos = (t_vec2){.x = ray.x, .y = ray.y};
 		*dist = ft_vec2_mag(ft_vec2_sub(ray.hit.pos, start));
-		if (*dist >= 100)
-			return (start);
+		if (*dist >= MAX_RAY_LENGHT)
+			break ;
 		if (ray.y >= 0 && ray.y < cub3d->map.size.y)
 			if (cub3d->map.tiles[(int)(ray.x + ray.offset)
 				+ ((int)ray.y * cub3d->map.size.x)] == '1')
 				return (ray.hit.pos);
 		ray.x += ray.step;
 	}
-	return (start);
+	return (g_vec2_null);
 }
 
 static void	hit_hori_hlpr(t_raycast *ray, t_vec2 start, t_vec2 dir)
@@ -75,15 +75,15 @@ static t_vec2	hit_hori(t_game *cub3d, t_vec2 start, t_vec2 dir, float *dist)
 		ray.x = ((dir.x / dir.y) * (ray.y - start.y)) + start.x;
 		ray.hit.pos = (t_vec2){.x = ray.x, .y = ray.y};
 		*dist = ft_vec2_mag(ft_vec2_sub(ray.hit.pos, start));
-		if (*dist >= 100)
-			return (start);
-		if (ray.x >= 0 && ray.x < cub3d->map.size.x)
+		if (*dist >= MAX_RAY_LENGHT)
+			break ;
+		if (ray.x > 0 && ray.x < cub3d->map.size.x)
 			if (cub3d->map.tiles[(int)(ray.x) + (((int)ray.y + ray.offset)
 					* cub3d->map.size.x)] == '1')
 				return (ray.hit.pos);
 		ray.y += ray.step;
 	}
-	return (start);
+	return (g_vec2_null);
 }
 
 void	raycast(t_game *cub3d, t_vec2 start, t_vec2 dir, t_hit *out)

@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftcolors.h                                         :+:      :+:    :+:   */
+/*   ft_colors.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 21:34:36 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/16 21:58:59 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/20 20:12:41 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FTCOLORS_H
-# define FTCOLORS_H
+#ifndef FT_COLORS_H
+# define FT_COLORS_H
 
-# include "ftstructs.h"
+# include "ft_structs.h"
 
 //---------------------Pre-Defi3ned Colors----------------------//
 

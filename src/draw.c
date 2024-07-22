@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:27:56 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/08 00:28:14 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/20 15:01:03 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,13 @@ void	draw_walls(t_game *cub3d)
 	int		i;
 
 	i = 0;
-	while (i < cub3d->coll_count)
+	while (i < HEIGHT)
 	{
+		if (ft_vec2_equ(cub3d->collisions[i].pos, g_vec2_null))
+		{
+			i++;
+			continue ;
+		}
 		ray_len = ft_vec2_dist(cub3d->collisions[i].pos, cub3d->player.pos);
 		line_height = HEIGHT
 			/ (ray_len * cos(ft_deg_to_rad(cub3d->coll_deg[i])));

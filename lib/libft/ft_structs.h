@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ftstructs.h                                        :+:      :+:    :+:   */
+/*   ft_structs.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 19:34:50 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/20 22:01:53 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/20 20:12:12 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTS_H
-# define STRUCTS_H
+#ifndef FT_STRUCTS_H
+# define FT_STRUCTS_H
 # if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
 
 typedef union u_color
@@ -51,11 +51,10 @@ typedef enum e_bool
 
 typedef struct s_vector
 {
-	size_t	type_size;		//Type size in bytes.
-	size_t	buffer_size;	//Buffer size in bytes
-	size_t	lenght;			//Count of elements
-	char	buffer[1];		//Main buffer for storage
-	//C++ like vector struct.
+	size_t	type_size;
+	size_t	buffer_size;
+	size_t	lenght;
+	char	buffer[1];
 }	t_vector;
 
 typedef struct s_list

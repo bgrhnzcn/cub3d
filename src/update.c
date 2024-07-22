@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:34:37 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/08 01:34:32 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/20 15:30:28 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,17 @@
 static void	update_rays(t_game *cub3d)
 {
 	int		i;
-	float	deg;
+	float	deg_step;
 
-	cub3d->coll_count = WIDTH;
-	cub3d->collisions = ft_calloc(cub3d->coll_count, sizeof (t_hit));
-	if (cub3d->collisions == NULL)
-		exit(EXIT_FAILURE);
-	cub3d->coll_deg = ft_calloc(cub3d->coll_count, sizeof (float));
-	if (cub3d->coll_deg == NULL)
-		exit(EXIT_FAILURE);
 	i = 0;
-	deg = -(WIDTH / 2);
+	deg_step = -(WIDTH / 2);
 	while (i < WIDTH)
 	{
-		cub3d->coll_deg[i] = ft_rad_to_deg(atan(deg / WIDTH));
+		cub3d->coll_deg[i] = ft_rad_to_deg(atan(deg_step / WIDTH));
 		raycast(cub3d, cub3d->player.pos,
 			ft_vec2_rot(cub3d->player.dir, cub3d->coll_deg[i]),
 			&cub3d->collisions[i]);
-		deg += 1;
+		deg_step += 1;
 		i++;
 	}
 }
@@ -82,7 +75,5 @@ int	update(void *param)
 	mlx_string_put(cub3d->mlx.mlx, cub3d->mlx.win.win, 20, 20, g_magenta.value,
 		frame_rate);
 	free(frame_rate);
-	free(cub3d->collisions);
-	free(cub3d->coll_deg);
 	return (0);
 }

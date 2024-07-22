@@ -22,8 +22,6 @@ float	ft_vec2_dot(t_vec2 vec1, t_vec2 vec2)
 	return (res);
 }
 
-#include <stdio.h>
-
 float	ft_vec2_dist(t_vec2 point1, t_vec2 point2)
 {
 	float	dist_x;
@@ -41,4 +39,12 @@ float	ft_vec2_mag(t_vec2 vec)
 	vec_null.x = 0;
 	vec_null.y = 0;
 	return (ft_vec2_dist(vec_null, vec));
+}
+
+t_bool	ft_vec2_equ(t_vec2 vec1, t_vec2 vec2)
+{
+	if (fabs(vec1.x) - fabs(vec2.x) < EPSILON
+		&& fabs(vec1.y) - fabs(vec2.y) < EPSILON)
+		return (true);
+	return (false);
 }
