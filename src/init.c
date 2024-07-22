@@ -6,7 +6,7 @@
 /*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:36:34 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/19 19:56:25 by faata            ###   ########.fr       */
+/*   Updated: 2024/07/22 17:22:42 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ void	init_game(t_game *cub3d)
 {
 	cub3d->inputs = (t_input){0};
 	cub3d->mlx.mlx = mlx_init();
+	if (take_all_things_from_doc(cub3d) == EXIT_FAILURE)
+		exit (EXIT_FAILURE);
 	init_tex(cub3d, &cub3d->tex_south, "textures/Icon6.xpm");
 	init_tex(cub3d, &cub3d->tex_west, "textures/Icon16.xpm");
 	init_tex(cub3d, &cub3d->tex_north, "textures/epic.xpm");
