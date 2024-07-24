@@ -46,11 +46,11 @@ OBJS = $(SRCS:$(SRC)/%.c=$(OBJ)/%.o)
 all: $(NAME)
 
 $(OBJ)/%.o: $(SRC)/%.c
-	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $?
+	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $?
 
 $(NAME): $(OBJS) $(MLX) $(LIBFT) $(GNL)
 	@echo "Compiling CUB3D..."
-	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ $? $(MLX_FLAGS)
+	$(CC) $(CFLAGS) $(INCLUDES) $^ -o $@ $(MLX_FLAGS)
 
 $(MLX):
 	@if [ ! -d "./lib/mlx" ]; then\
