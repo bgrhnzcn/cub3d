@@ -16,6 +16,8 @@ SRCS = $(SRC)/cub3d.c \
 	$(SRC)/texture.c \
 	$(SRC)/debug.c \
 	$(SRC)/start.c \
+	$(SRC)/parse_control.c \
+
 
 MLX = lib/mlx/libmlx.a
 

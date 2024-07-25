@@ -12,7 +12,12 @@ int	take_rgb_value(char	*values, t_color *background)
 	while (res[++i])
 		;
 	if (i != 3)
+	{
+		i = -1;
+		while (res[++i])
+			free(res[i]);
 		return (EXIT_FAILURE);
+	}
 	if (ft_atoi(res[0]) > 255 || ft_atoi(res[0]) < 0 || ft_atoi(res[1]) > 255
 		|| ft_atoi(res[1]) < 0 || ft_atoi(res[2]) > 255
 		|| ft_atoi(res[2]) < 0)
@@ -20,6 +25,9 @@ int	take_rgb_value(char	*values, t_color *background)
 	background->red = ft_atoi(res[0]);
 	background->green = ft_atoi(res[1]);
 	background->blue = ft_atoi(res[2]);
+	i = -1;
+	while (res[++i])
+		free(res[i]);
 	return (EXIT_SUCCESS);
 }
 
@@ -34,25 +42,22 @@ int	check_for_name(char *temp, t_game *cub3d)
 	while (t1[i] && t1[i] != ' ' && t1[i] != '\t')
 		i++;
 	sub = ft_substr(t1, 0, i);
-	if (ft_strncmp(sub, "NO", ft_strlen(sub)) == 0 && cub3d->north_path == NULL)
+	control_names_and_values(sub, cub3d);
+	if (ft_strncmp(sub, "NO", ft_strlen(sub)) == 0 && !cub3d->north_path)
 		cub3d->north_path = ft_strtrim(t1 + i, " \t");
-	else if (ft_strncmp(sub, "SO", ft_strlen(sub)) == 0 && cub3d->south_path == NULL)
+	else if (ft_strncmp(sub, "SO", ft_strlen(sub)) == 0 && !cub3d->south_path)
 		cub3d->south_path = ft_strtrim(t1 + i, " \t");
-	else if (ft_strncmp(sub, "WE", ft_strlen(sub)) == 0 && cub3d->west_path == NULL)
+	else if (ft_strncmp(sub, "WE", ft_strlen(sub)) == 0 && !cub3d->west_path)
 		cub3d->west_path = ft_strtrim(t1 + i, " \t");
-	else if (ft_strncmp(sub, "EA", ft_strlen(sub)) == 0 && cub3d->east_path == NULL)
+	else if (ft_strncmp(sub, "EA", ft_strlen(sub)) == 0 && !cub3d->east_path)
 		cub3d->east_path = ft_strtrim(t1 + i, " \t");
 	else if (ft_strncmp(sub, "F", ft_strlen(sub)) == 0)
-	{
-		if (take_rgb_value(ft_strtrim(t1 + i, " \t"), &cub3d->floor))
-			return (EXIT_FAILURE);
-	}
+		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
+				&cub3d->floor));
 	else if (ft_strncmp(sub, "C", ft_strlen(sub)) == 0)
-	{
-		if (take_rgb_value(ft_strtrim(t1 + i, " \t"), &cub3d->ceil))
-			return (EXIT_FAILURE);
-	}
-	return (EXIT_SUCCESS);
+		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
+				&cub3d->ceil));
+	return (free(sub), free (t1), EXIT_SUCCESS);
 }
 
 int	take_all_textures_path(char	**temp, t_game *cub3d)
@@ -65,12 +70,13 @@ int	take_all_textures_path(char	**temp, t_game *cub3d)
 	cub3d->west_path = NULL;
 	cub3d->south_path = NULL;
 	while (temp[++i])
+	{
 		if (check_for_name(temp[i], cub3d))
+		{
+			printf("Parse error!\n");
 			exit (EXIT_FAILURE);
-	printf("north: %s\n", cub3d->north_path);
-	printf("south: %s\n", cub3d->south_path);
-	printf("west: %s\n", cub3d->east_path);
-	printf("east: %s\n", cub3d->west_path);
+		}
+	}
 	return (EXIT_SUCCESS);
 }
 
