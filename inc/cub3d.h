@@ -65,12 +65,20 @@ typedef struct s_input
 	t_bool	esc_key;
 }	t_input;
 
+typedef struct s_parse
+{
+	char		*map_path;
+	char		*no_pth;
+	char		*we_pth;
+	char		*so_pth;
+	char		*ea_pth;
+}	t_parse;
+
 typedef struct s_game
 {
 	t_hit		collisions[WIDTH];
 	float		coll_deg[WIDTH];
 	double		delta_time;
-	char		*map_path;
 	t_tile_map	map;
 	t_player	player;
 	t_input		inputs;
@@ -80,12 +88,11 @@ typedef struct s_game
 	t_img		tex_east;
 	t_color		floor;
 	t_color		ceil;
-	char		*north_path;
-	char		*west_path;
-	char		*south_path;
-	char		*east_path;
 	t_mlx		mlx;
 	t_mlx		debug;
+	t_bool		fl_cntrl;
+	t_bool		cl_cntrl;
+	t_parse		parse;
 }	t_game;
 
 typedef struct s_raycast

@@ -6,7 +6,7 @@
 /*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:36:34 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/24 17:39:05 by faata            ###   ########.fr       */
+/*   Updated: 2024/07/25 15:00:01 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ void	init_game(t_game *cub3d)
 	cub3d->mlx.mlx = mlx_init();
 	if (take_all_things_from_doc(cub3d) == EXIT_FAILURE)
 		exit (EXIT_FAILURE);
-	init_tex(cub3d, &cub3d->tex_south, cub3d->south_path);
-	init_tex(cub3d, &cub3d->tex_west, cub3d->west_path);
-	init_tex(cub3d, &cub3d->tex_north, cub3d->north_path);
-	init_tex(cub3d, &cub3d->tex_east, cub3d->east_path);
+	init_tex(cub3d, &cub3d->tex_south, cub3d->parse.so_pth);
+	init_tex(cub3d, &cub3d->tex_west, cub3d->parse.we_pth);
+	init_tex(cub3d, &cub3d->tex_north, cub3d->parse.no_pth);
+	init_tex(cub3d, &cub3d->tex_east, cub3d->parse.ea_pth);
 	mirror_tex(&cub3d->tex_north);
 	mirror_tex(&cub3d->tex_east);
 	init_win(cub3d);
