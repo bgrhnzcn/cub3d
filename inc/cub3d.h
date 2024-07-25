@@ -70,6 +70,7 @@ typedef struct s_game
 	t_hit		collisions[WIDTH];
 	float		coll_deg[WIDTH];
 	double		delta_time;
+	char		*map_path;
 	t_tile_map	map;
 	t_player	player;
 	t_input		inputs;
@@ -77,6 +78,12 @@ typedef struct s_game
 	t_img		tex_west;
 	t_img		tex_south;
 	t_img		tex_east;
+	t_color		floor;
+	t_color		ceil;
+	char		*north_path;
+	char		*west_path;
+	char		*south_path;
+	char		*east_path;
 	t_mlx		mlx;
 	t_mlx		debug;
 }	t_game;
@@ -147,6 +154,10 @@ int		key_press_handler(int keycode, t_game *cub3d);
 int		key_release_handler(int keycode, t_game *cub3d);
 void	player_movement(t_game *cub3d, t_vec2 dir);
 void	player_camera(t_game *cub3d, t_bool rotate_dir);
+
+//----------------------- Map -----------------
+int	take_all_things_from_doc(t_game *cub3d);
+int	control_names_and_values(char *sub, t_game *cub3d);
 
 
 

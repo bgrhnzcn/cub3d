@@ -14,7 +14,10 @@ SRCS = $(SRC)/cub3d.c \
 	$(SRC)/controller.c \
 	$(SRC)/raycast.c \
 	$(SRC)/texture.c \
-	$(SRC)/debug.c
+	$(SRC)/debug.c \
+	$(SRC)/start.c \
+	$(SRC)/parse_control.c \
+
 
 MLX = lib/mlx/libmlx.a
 

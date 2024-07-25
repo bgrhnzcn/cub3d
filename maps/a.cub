@@ -1,17 +1,21 @@
 
-NO 	./path_to_the_north_texture
-SO ./path_to_the_south_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
-F 220,100,0
-C 225,30,0
 
 
+
+
+
+NO 						/Users/faata/Desktop/cub3d/textures/epic.xpm
+SO							/Users/faata/Desktop/cub3d/textures/Icon2.xpm
+WE /Users/faata/Desktop/cub3d/textures/Icon6.xpm
+EA /Users/faata/Desktop/cub3d/textures/Icon10.xpm
+EA /Users/faata/Desktop/cub3d/textures/Icon10.xpm
+F 50,50,										50
+C 160,	32,	255
 
 1111111111111111111111111
 1000000000000000000000001
 1000000000000000000000001101
 10000000000000N000000000001
 1000000000000000000000011111
-100000000000000000000001xxxx
-111111111111111111111111111x
+100000000000000000000001
+111111111111111111111111111

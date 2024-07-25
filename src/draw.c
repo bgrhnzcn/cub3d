@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:27:56 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/20 15:01:03 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/07/24 17:35:09 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void	draw_background(t_game *cub3d)
 		while (j >= 0 && j < HEIGHT)
 		{
 			if (j <= HEIGHT / 2)
-				ft_put_pixel(&cub3d->mlx.img, i, j, g_blue);
+				ft_put_pixel(&cub3d->mlx.img, i, j, cub3d->ceil);
 			else
-				ft_put_pixel(&cub3d->mlx.img, i, j, g_gray);
+				ft_put_pixel(&cub3d->mlx.img, i, j, cub3d->floor);
 			j++;
 		}
 		i++;
