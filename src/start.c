@@ -12,12 +12,7 @@ int	take_rgb_value(char	*values, t_color *background)
 	while (res[++i])
 		;
 	if (i != 3)
-	{
-		i = -1;
-		while (res[++i])
-			free(res[i]);
-		return (EXIT_FAILURE);
-	}
+		return (free_dpointer(res), EXIT_FAILURE);
 	if (ft_atoi(res[0]) > 255 || ft_atoi(res[0]) < 0 || ft_atoi(res[1]) > 255
 		|| ft_atoi(res[1]) < 0 || ft_atoi(res[2]) > 255
 		|| ft_atoi(res[2]) < 0)
@@ -25,24 +20,19 @@ int	take_rgb_value(char	*values, t_color *background)
 	background->red = ft_atoi(res[0]);
 	background->green = ft_atoi(res[1]);
 	background->blue = ft_atoi(res[2]);
-	i = -1;
-	while (res[++i])
-		free(res[i]);
-	return (EXIT_SUCCESS);
+	return (free_dpointer(res), EXIT_SUCCESS);
 }
 
-int	check_for_name(char *temp, t_game *cub3d)
+int	check_for_name(char *temp, t_game *cub3d, int i)
 {
 	char	*t1;
 	char	*sub;
-	int		i;
 
-	i = 0;
 	t1 = ft_strtrim(temp, " \t");
 	while (t1[i] && t1[i] != ' ' && t1[i] != '\t')
 		i++;
 	sub = ft_substr(t1, 0, i);
-	if (control_names_and_values(sub, cub3d))
+	if (control_names_and_values(sub, cub3d, 1))
 		return (free (t1), free (sub), EXIT_FAILURE);
 	if (ft_strncmp(sub, "NO", ft_strlen(sub)) == 0 && !cub3d->parse.no_pth)
 		cub3d->parse.no_pth = ft_strtrim(t1 + i, " \t");
@@ -74,7 +64,9 @@ int	take_all_textures_path(char	**temp, t_game *cub3d)
 	cub3d->cl_cntrl = false;
 	while (temp[++i])
 	{
-		if (check_for_name(temp[i], cub3d))
+		if (!control_names_and_values(NULL, cub3d, 0))
+			break ;
+		if (check_for_name(temp[i], cub3d, 0))
 		{
 			printf("Parse error!\n");
 			exit (EXIT_FAILURE);

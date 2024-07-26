@@ -163,8 +163,9 @@ void	player_movement(t_game *cub3d, t_vec2 dir);
 void	player_camera(t_game *cub3d, t_bool rotate_dir);
 
 //----------------------- Map -----------------
-int	take_all_things_from_doc(t_game *cub3d);
-int	control_names_and_values(char *sub, t_game *cub3d);
+int		take_all_things_from_doc(t_game *cub3d);
+int		control_names_and_values(char *sub, t_game *cub3d, int status);
+void	free_dpointer(char	**arr);
 
 
 
