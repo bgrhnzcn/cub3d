@@ -72,6 +72,7 @@ int	take_all_textures_path(char	**temp, t_game *cub3d)
 			exit (EXIT_FAILURE);
 		}
 	}
+	take_and_control_map((temp + i), cub3d);
 	return (EXIT_SUCCESS);
 }
 

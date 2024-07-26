@@ -166,6 +166,11 @@ void	player_camera(t_game *cub3d, t_bool rotate_dir);
 int		take_all_things_from_doc(t_game *cub3d);
 int		control_names_and_values(char *sub, t_game *cub3d, int status);
 void	free_dpointer(char	**arr);
+int		take_and_control_map(char	**res, t_game *cub3d);
+int		take_line_len(char	*str);
+void	check_for_spaces(char **line, t_game *cub3d);
+void	take_max_x(char **res, t_game *cub3d);
+
 
 
 

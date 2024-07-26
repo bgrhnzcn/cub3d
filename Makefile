@@ -18,6 +18,7 @@ SRCS = $(SRC)/cub3d.c \
 	$(SRC)/start.c \
 	$(SRC)/parse_control.c \
 	$(SRC)/parse_utils.c \
+	$(SRC)/parse_taking_map.c \
 
 
 MLX = lib/mlx/libmlx.a
