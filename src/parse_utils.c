@@ -1,5 +1,27 @@
 #include "cub3d.h"
 
+int	find_first_one(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str[++i])
+		if (str[i] != 'X')
+			break ;
+	return (i);
+}
+
+int	find_last_one(char *str)
+{
+	int	i;
+
+	i = ft_strlen(str);
+	while (--i > 0)
+		if (str[i] != 'X')
+			break ;
+	return (i);
+}
+
 void	take_max_x(char **res, t_game *cub3d)
 {
 	int	i;
@@ -22,7 +44,7 @@ int	take_line_len(char	*str)
 	while (str[++i])
 	{
 		if (str[i] == '\t')
-			len += 3;
+			len += 4;
 		else
 			len++;
 	}

@@ -18,6 +18,7 @@ void	check_for_spaces(char **line, t_game *cub3d)
 			res[j++] = 'X';
 			res[j++] = 'X';
 			res[j++] = 'X';
+			res[j++] = 'X';
 			i++;
 		}
 		else

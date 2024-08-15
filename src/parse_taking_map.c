@@ -17,11 +17,8 @@ int	take_and_control_map(char	**res, t_game *cub3d)
 	i = -1;
 	take_max_x(res, cub3d);
 	while (res[++i])
-	{
 		check_for_spaces(&res[i], cub3d);
-		print_line(res[i]);
-	}
-	printf("size: %d\n", cub3d->map.size.x);
-	exit (1);
+	if (control_map(cub3d, res) == EXIT_FAILURE)
+		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
