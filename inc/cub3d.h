@@ -163,9 +163,20 @@ void	player_movement(t_game *cub3d, t_vec2 dir);
 void	player_camera(t_game *cub3d, t_bool rotate_dir);
 
 //----------------------- Map -----------------
-int	take_all_things_from_doc(t_game *cub3d);
-int	control_names_and_values(char *sub, t_game *cub3d);
-
+int		take_all_things_from_doc(t_game *cub3d);
+int		control_names_and_values(char *sub, t_game *cub3d, int status);
+void	free_dpointer(char	**arr);
+int		take_and_control_map(char	**res, t_game *cub3d);
+int		take_line_len(char	*str);
+void	check_for_spaces(char **line, t_game *cub3d);
+void	take_max_x(char **res, t_game *cub3d);
+//---------------- Map Control ----------------
+int control_map(t_game  *cub3d, char **map);
+int	find_first_one(char *str);
+int	find_last_one(char *str);
+int check_no_wall_situation(char **map);
+int	check_for_undefined_char(char **map);
+void	print_line(char *str); // silinecek!!!!!!
 
 
 #endif
