@@ -41,10 +41,6 @@ int	check_first_and_last_index(char **map)
 
 int	check_for_map_borders(char **map)
 {
-	int	i;
-	//int	j;
-
-	i = -1;
 	if (check_first_and_last_line(map) == EXIT_FAILURE)
 	{
 		printf("First or last line is not closed!\n");
