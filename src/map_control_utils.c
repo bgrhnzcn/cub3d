@@ -1,5 +1,55 @@
 #include "cub3d.h"
 
+int	take_map_size(char **map)
+{
+	int	i;
+
+	i = -1;
+	while (map[++i])
+		;
+	return (i);
+}
+
+char **copy_map(char **map)
+{
+	char **res;
+	int	i;
+
+	i = -1;
+	res = malloc(sizeof(char *) * (take_map_size(map) + 1));
+	while (map[++i])
+		res[i] = ft_strdup(map[i]);
+	return (res);
+}
+
+void	take_player_pos(t_game *cub3d, char **map)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+		{
+			if (ft_strchr("WSNE", map[i][j]) != NULL)
+			{
+				cub3d->player.pos.x = i + 0.5;
+				cub3d->player.pos.y = j - 0.5;
+				if (map[i][j] == 'S')
+					cub3d->player.dir = (t_vec2){.x = 0, .y = 1};
+				if (map[i][j] == 'N')
+					cub3d->player.dir = (t_vec2){.x = 0, .y = -1};
+				if (map[i][j] == 'W')
+					cub3d->player.dir = (t_vec2){.x = -1, .y = 0};
+				if (map[i][j] == 'E')
+					cub3d->player.dir = (t_vec2){.x = 1, .y = 0};
+			}
+		}
+	}
+}
+
 int	check_for_undefined_char(char **map)
 {
 	int	i;
@@ -18,32 +68,5 @@ int	check_for_undefined_char(char **map)
 			}
 		}
 	}
-	return (EXIT_SUCCESS);
-}
-
-int check_up_bottom_line(char **map, int i, int j)
-{
-    if ((map[i - 1] && map[i - 1][j] &&  map[i - 1][j] == '0')
-	|| (map[i + 1] && map[i + 1][j] &&  map[i + 1][j] == '0'))
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
-}
-
-int check_no_wall_situation(char **map)
-{
-    int i;
-    int j;
-
-    i = -1;
-    while (map[++i])
-    {
-        j = -1;
-        while (map[i][++j])
-        {
-            if (map[i][j] == 'X')
-                if (check_up_bottom_line(map, i, j))
-					return (EXIT_FAILURE);
-        }
-    }
 	return (EXIT_SUCCESS);
 }

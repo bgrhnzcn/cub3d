@@ -72,6 +72,7 @@ typedef struct s_parse
 	char		*we_pth;
 	char		*so_pth;
 	char		*ea_pth;
+	int			retval;
 }	t_parse;
 
 typedef struct s_game
@@ -171,11 +172,13 @@ int		take_line_len(char	*str);
 void	check_for_spaces(char **line, t_game *cub3d);
 void	take_max_x(char **res, t_game *cub3d);
 //---------------- Map Control ----------------
-int control_map(t_game  *cub3d, char **map);
-int	find_first_one(char *str);
-int	find_last_one(char *str);
-int check_no_wall_situation(char **map);
-int	check_for_undefined_char(char **map);
+int		control_map(t_game  *cub3d, char **map);
+int		find_first_one(char *str);
+int		find_last_one(char *str);
+int		check_for_undefined_char(char **map);
+char	**copy_map(char **map);
+int		take_map_size(char **map);
+void	take_player_pos(t_game *cub3d, char **map);
 void	print_line(char *str); // silinecek!!!!!!
 
 
