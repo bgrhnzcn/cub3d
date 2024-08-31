@@ -2,37 +2,24 @@
 
 int	flood_fill(char **map, int x, int y, t_game *cub3d)
 {
-	printf("x: %d\n", x);
-	printf("y: %d\n", y);
-	printf("xsize: %d\n", cub3d->map.size.x);
-	printf("ysize: %d\n", cub3d->map.size.y);
+	int	ret;
+
+	ret = 0;
 	if (x >= cub3d->map.size.x || y >= cub3d->map.size.y || y < 0 || x < 0)
-		return (EXIT_SUCCESS);
+		return (ret);
 	if (map[y][x] == 'X' || map[y][x] == '\0')
-		return (EXIT_FAILURE);
-	if (map[y][x] == '1')
-		return (EXIT_SUCCESS);
-	map[y][x] = '1';
-	cub3d->parse.retval += flood_fill(map, x + 1, y, cub3d);
-	cub3d->parse.retval += flood_fill(map, x - 1, y, cub3d);
-	cub3d->parse.retval += flood_fill(map, x, y + 1, cub3d);
-	cub3d->parse.retval += flood_fill(map, x, y - 1, cub3d);
-	return (cub3d->parse.retval);
-}
-
-int	check_for_map_borders(t_game *cub3d, char **map)
-{
-	int	i;
-	//int	j;
-
-	i = -1;
-	if (check_first_and_last_line(map) == EXIT_FAILURE)
 	{
-		printf("Map is not closed!\n");
-		return (EXIT_FAILURE);
+		ret = 1;
+		return (ret);
 	}
-	exit (1);
-	return (EXIT_SUCCESS);
+	if (map[y][x] == '1')
+		return (ret);
+	map[y][x] = '1';
+	ret += flood_fill(map, x + 1, y, cub3d);
+	ret += flood_fill(map, x - 1, y, cub3d);
+	ret += flood_fill(map, x, y + 1, cub3d);
+	ret += flood_fill(map, x, y - 1, cub3d);
+	return (ret);
 }
 
 int check_for_char(char **map)
@@ -71,12 +58,25 @@ int check_for_char(char **map)
 
 int control_map(t_game  *cub3d, char **map)
 {
+	char	**cpy;
+
+	cpy = copy_map(map);
 	take_player_pos(cub3d, map);
+	printf("px: %f\n", cub3d->player.pos.x);
+	printf("py: %f\n", cub3d->player.pos.y);
+	//exit (1);
+	cub3d->map.size.y = take_map_size(map);
     if (check_for_char(map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	if (check_for_undefined_char(map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (check_for_map_borders(cub3d, map) == EXIT_FAILURE)
+	cub3d->parse.retval = 0;
+	cub3d->parse.retval += flood_fill(cpy, cub3d->player.pos.y, cub3d->player.pos.x, cub3d);
+	free_dpointer(cpy);
+	if (cub3d->parse.retval != EXIT_SUCCESS)
+	{
+		printf("There is a hole in map.\n");
 		return (EXIT_FAILURE);
+	}
 	return (EXIT_SUCCESS);
 }

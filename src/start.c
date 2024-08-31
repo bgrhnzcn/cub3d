@@ -42,10 +42,10 @@ int	check_for_name(char *temp, t_game *cub3d, int i)
 		cub3d->parse.we_pth = ft_strtrim(t1 + i, " \t");
 	else if (ft_strncmp(sub, "EA", ft_strlen(sub)) == 0 && !cub3d->parse.ea_pth)
 		cub3d->parse.ea_pth = ft_strtrim(t1 + i, " \t");
-	else if (ft_strncmp(sub, "F", ft_strlen(sub)) == 0 && cub3d->fl_cntrl++)
+	else if (ft_strncmp(sub, "F", ft_strlen(sub)) == 0 && !cub3d->fl_cntrl++)
 		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
 				&cub3d->floor));
-	else if (ft_strncmp(sub, "C", ft_strlen(sub)) == 0 && cub3d->cl_cntrl++)
+	else if (ft_strncmp(sub, "C", ft_strlen(sub)) == 0 && !cub3d->cl_cntrl++)
 		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
 				&cub3d->ceil));
 	return (free(sub), free (t1), EXIT_SUCCESS);
@@ -105,7 +105,7 @@ int	take_all_things_from_doc(t_game *cub3d)
 	if (fd == -1)
 		return (printf("Can't open '.cub' file!\n"), EXIT_FAILURE);
 	size_of_map(&temp, fd);
-	if (take_all_textures_path(temp, cub3d))
+	if (take_all_textures_path(temp, cub3d) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

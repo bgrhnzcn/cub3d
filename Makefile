@@ -115,7 +115,7 @@ OBJS = $(SRCS:$(SRC)/%.c=$(OBJ)/%.o)
 
 # Object Files Compilation
 $(OBJ)/%.o: $(SRC)/%.c
-	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $^ 2> /dev/null &&\
+	@$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $^ &&\
 	(echo $^ | awk -F "/" '{printf "$(BOLD_GREEN)%-9s $(BOLD_BLUE)%-30s $(BOLD_GREEN)%-4s\n$(RESET)", "Compiling" , $$2, "[OK]"; fflush()}') ||\
 	(echo $^ | awk -F "/" '{printf "$(BOLD_RED)%-9s $(BOLD_BLUE)%-30s $(BOLD_RED)%-4s\n$(RESET)", "FAILED" , $$2, "[KO]"; fflush()}'; exit 1)
 
@@ -257,7 +257,7 @@ clean: header
 	@if [ -d "$(MLX_DIR)" ]; then\
 		make -C $(MLX_DIR) clean > /dev/null 2> /dev/null;\
 	fi
-	@printf "$(BOLD_MAGENTA)All unnecessery files cleared.\n$(RESET)"
+	@printf "$(BOLD_MAGENTA)All unnecessary files cleared.\n$(RESET)"
 
 re: header fclean all
 
