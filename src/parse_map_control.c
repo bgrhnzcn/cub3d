@@ -22,12 +22,11 @@ int	flood_fill(char **map, int x, int y, t_game *cub3d)
 
 int	check_for_map_borders(t_game *cub3d, char **map)
 {
-	char	**cpy;
+	int	i;
+	//int	j;
 
-	cpy = copy_map(map);
-	cub3d->parse.retval = EXIT_SUCCESS;
-	cub3d->map.size.y = take_map_size(map);
-	if (flood_fill(cpy, ceilf(cub3d->player.pos.y), floorf(cub3d->player.pos.x), cub3d) != EXIT_SUCCESS)
+	i = -1;
+	if (check_first_and_last_line(map) == EXIT_FAILURE)
 	{
 		printf("Map is not closed!\n");
 		return (EXIT_FAILURE);

@@ -21,12 +21,13 @@ ifeq ($(USE_MATH),TRUE)
 	ft_drawing.c ft_maps.c ft_colors.c
 endif
 
+%.o: %.c
 ifeq ($(USE_MATH),TRUE)
-%.o: %.c
-	$(CC) $(FLAGS) -D USE_MATH=1 -c $<
+	@$(CC) $(FLAGS) -D USE_MATH=1 -c $< -o $@
+	@echo "$(CC) $(FLAGS) -D USE_MATH=1 -c $< -o $@"
 else
-%.o: %.c
-	$(CC) $(FLAGS) -c $<
+	@$(CC) $(FLAGS) -c $< -o $@
+	@echo "$(CC) $(FLAGS) -c $< -o $@"
 endif
 
 CC = gcc
@@ -40,13 +41,13 @@ OBJECTS = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): ${OBJECTS}
-	ar -rcs $(NAME) $(OBJECTS)
+	@ar -rcs $(NAME) $(OBJECTS)
 
 clean:
-	rm -f *.o
+	@rm -f *.o
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 
