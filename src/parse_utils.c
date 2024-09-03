@@ -49,7 +49,6 @@ int	take_line_len(char	*str)
 			len++;
 	}
 	return (len);
-	
 }
 
 void	free_dpointer(char	**arr)

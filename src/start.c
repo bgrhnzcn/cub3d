@@ -34,20 +34,22 @@ int	check_for_name(char *temp, t_game *cub3d, int i)
 	sub = ft_substr(t1, 0, i);
 	if (control_names_and_values(sub, cub3d, 1))
 		return (free (t1), free (sub), EXIT_FAILURE);
-	if (ft_strncmp(sub, "NO", ft_strlen(sub)) == 0 && !cub3d->parse.no_pth)
+	if (check_same(sub, "NO") == 0 && !cub3d->parse.no_pth)
 		cub3d->parse.no_pth = ft_strtrim(t1 + i, " \t");
-	else if (ft_strncmp(sub, "SO", ft_strlen(sub)) == 0 && !cub3d->parse.so_pth)
+	else if (check_same(sub, "SO") == 0 && !cub3d->parse.so_pth)
 		cub3d->parse.so_pth = ft_strtrim(t1 + i, " \t");
-	else if (ft_strncmp(sub, "WE", ft_strlen(sub)) == 0 && !cub3d->parse.we_pth)
+	else if (check_same(sub, "WE") == 0 && !cub3d->parse.we_pth)
 		cub3d->parse.we_pth = ft_strtrim(t1 + i, " \t");
-	else if (ft_strncmp(sub, "EA", ft_strlen(sub)) == 0 && !cub3d->parse.ea_pth)
+	else if (check_same(sub, "EA") == 0 && !cub3d->parse.ea_pth)
 		cub3d->parse.ea_pth = ft_strtrim(t1 + i, " \t");
-	else if (ft_strncmp(sub, "F", ft_strlen(sub)) == 0 && !cub3d->fl_cntrl++)
+	else if (check_same(sub, "F") == 0 && !cub3d->fl_cntrl++)
 		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
 				&cub3d->floor));
-	else if (ft_strncmp(sub, "C", ft_strlen(sub)) == 0 && !cub3d->cl_cntrl++)
+	else if (check_same(sub, "C") == 0 && !cub3d->cl_cntrl++)
 		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
 				&cub3d->ceil));
+	else
+		return (free(sub), free(t1), EXIT_FAILURE);
 	return (free(sub), free (t1), EXIT_SUCCESS);
 }
 
@@ -66,9 +68,9 @@ int	take_all_textures_path(char	**temp, t_game *cub3d)
 	{
 		if (!control_names_and_values(NULL, cub3d, 0))
 			break ;
-		if (check_for_name(temp[i], cub3d, 0))
+		if (check_for_name(temp[i], cub3d, 0) == EXIT_FAILURE)
 		{
-			printf("Parse error!\n");
+			printf("You must give one acceptable value for each information!\n");
 			exit (EXIT_FAILURE);
 		}
 	}
@@ -84,6 +86,11 @@ void	size_of_map(char ***res, int fd)
 	char	*temp2;
 
 	temp = get_next_line(fd);
+	if (!temp)
+	{
+		*res = NULL;
+		return ;
+	}
 	temp1 = get_next_line(fd);
 	while (temp1)
 	{
@@ -101,10 +108,14 @@ int	take_all_things_from_doc(t_game *cub3d)
 	char	**temp;
 	int		fd;
 
+	if (control_extension(cub3d->parse.map_path) == EXIT_FAILURE)
+		return (printf("Extension of given file must be '.cub' format\n"));
 	fd = open(cub3d->parse.map_path, O_RDONLY);
 	if (fd == -1)
-		return (printf("Can't open '.cub' file!\n"), EXIT_FAILURE);
+		return (printf("Can't open given file!\n"), EXIT_FAILURE);
 	size_of_map(&temp, fd);
+	if (temp == NULL || take_map_size(temp) < 3)
+		return (printf("Given file must contain at least 3 line\n"));
 	if (take_all_textures_path(temp, cub3d) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
