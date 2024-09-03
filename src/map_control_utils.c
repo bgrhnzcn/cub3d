@@ -10,10 +10,10 @@ int	take_map_size(char **map)
 	return (i);
 }
 
-char **copy_map(char **map)
+char	**copy_map(char **map)
 {
-	char **res;
-	int	i;
+	char	**res;
+	int		i;
 
 	i = -1;
 	res = malloc(sizeof(char *) * (take_map_size(map) + 1));
