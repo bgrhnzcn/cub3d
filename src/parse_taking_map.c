@@ -56,7 +56,6 @@ int	take_and_control_map(char	**res, t_game *cub3d)
 	take_max_x(res, cub3d);
 	while (res[++i])
 		check_for_spaces(&res[i], cub3d, 0, 0);
-	cub3d->parse.no_pth = NULL;
 	if (control_map(cub3d, res) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	cub3d->map.tiles = take_map_in_line(res);
