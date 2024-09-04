@@ -22,6 +22,7 @@ static void	init_player(t_game *cub3d)
 
 static void	init_tex(t_game *cub3d, t_img *tex, char *path)
 {
+	printf("path: %s\n", path);
 	tex->img = mlx_xpm_file_to_image(cub3d->mlx.mlx, path,
 			&tex->size_line, &tex->line_count);
 	if (tex->img == NULL)
@@ -56,10 +57,10 @@ void	init_game(t_game *cub3d)
 	cub3d->mlx.mlx = mlx_init();
 	if (take_all_things_from_doc(cub3d) == EXIT_FAILURE)
 		exit (EXIT_FAILURE);
-	init_tex(cub3d, &cub3d->tex_south, cub3d->parse.so_pth);
-	init_tex(cub3d, &cub3d->tex_west, cub3d->parse.we_pth);
 	init_tex(cub3d, &cub3d->tex_north, cub3d->parse.no_pth);
+	init_tex(cub3d, &cub3d->tex_south, cub3d->parse.so_pth);
 	init_tex(cub3d, &cub3d->tex_east, cub3d->parse.ea_pth);
+	init_tex(cub3d, &cub3d->tex_west, cub3d->parse.we_pth);
 	mirror_tex(&cub3d->tex_north);
 	mirror_tex(&cub3d->tex_east);
 	init_win(cub3d);

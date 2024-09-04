@@ -36,7 +36,7 @@ void	take_player_pos(t_game *cub3d, char **map)
 		{
 			if (ft_strchr("WSNE", map[i][j]) != NULL)
 			{
-				cub3d->player.pos.x = j - 0.5;
+				cub3d->player.pos.x = j + 0.5;
 				cub3d->player.pos.y = i + 0.5;
 				if (map[i][j] == 'S')
 					cub3d->player.dir = (t_vec2){.x = 0, .y = 1};
