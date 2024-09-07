@@ -2,8 +2,8 @@
 
 int	check_same(char *str, char *str2)
 {
-	if (ft_strncmp(str,str2, ft_strlen(str)) == 0
-	&& ft_strncmp(str,str2, ft_strlen(str2)) == 0)
+	if (ft_strncmp(str, str2, ft_strlen(str)) == 0
+		&& ft_strncmp(str, str2, ft_strlen(str2)) == 0)
 		return (0);
 	return (1);
 }

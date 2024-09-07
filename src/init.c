@@ -12,13 +12,11 @@
 
 #include "cub3d.h"
 
-
 static void	init_player(t_game *cub3d)
 {
 	cub3d->player.move_speed = 10;
 	cub3d->player.camera_speed = 100;
 }
-
 
 static void	init_tex(t_game *cub3d, t_img *tex, char *path)
 {
@@ -64,9 +62,6 @@ void	init_game(t_game *cub3d)
 	mirror_tex(&cub3d->tex_north);
 	mirror_tex(&cub3d->tex_east);
 	init_win(cub3d);
-	#if DEBUG == 1
-	init_debug(cub3d);
-	#endif
 	init_player(cub3d);
 	mlx_put_image_to_window(cub3d->mlx.mlx, cub3d->mlx.win.win,
 		cub3d->mlx.img.img, 0, 0);
