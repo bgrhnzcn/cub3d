@@ -6,7 +6,7 @@
 #    By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 10:33:01 by bgrhnzcn          #+#    #+#              #
-#    Updated: 2024/08/31 01:26:06 by bgrhnzcn         ###   ########.fr        #
+#    Updated: 2024/09/07 10:49:12 by bgrhnzcn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -231,7 +231,7 @@ MLX_COMP = awk '{ \
 	fi
 
 # MiniLibX Compilation
-$(MLX):
+$(MLX): $(MLX_DIR)
 	@printf "$(BOLD_CYAN)Compiling MiniLibX...\n"
 	@cd $(MLX_DIR) && $(MLX_COMP)
 
