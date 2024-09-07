@@ -23,9 +23,8 @@ int	take_rgb_value(char	*values, t_color *background)
 	return (free_dpointer(res), EXIT_SUCCESS);
 }
 
-int	check_for_name(char *temp, t_game *cub3d, int i)
+int	check_for_name(char *temp, t_game *cub3d, char *t1, int i)
 {
-	char	*t1;
 	char	*sub;
 
 	t1 = ft_strtrim(temp, " \t");
@@ -68,9 +67,10 @@ int	take_all_textures_path(char	**temp, t_game *cub3d)
 	{
 		if (!control_names_and_values(NULL, cub3d, 0))
 			break ;
-		if (check_for_name(temp[i], cub3d, 0) == EXIT_FAILURE)
+		if (check_for_name(temp[i], cub3d, NULL, 0) == EXIT_FAILURE)
 		{
-			printf("You must give one acceptable value for each information!\n");
+			printf("You must give one acceptable\
+			value for each information!\n");
 			exit (EXIT_FAILURE);
 		}
 	}

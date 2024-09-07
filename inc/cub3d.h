@@ -140,7 +140,7 @@ void	rotate_index(t_img *tex);
 void	mirror_tex(t_img *tex);
 float	get_tex_y(t_img *tex, float i, float height);
 void	draw_tex_helper(int *i, float *tex_y,
-	float *full_height, float *line_height);
+			float *full_height, float *line_height);
 t_color	*get_tex_data(t_img *tex, float tex_x);
 
 //---------------------- Update --------------------------
@@ -172,7 +172,7 @@ int		take_line_len(char	*str);
 void	check_for_spaces(char **line, t_game *cub3d, int i, int j);
 void	take_max_x(char **res, t_game *cub3d);
 //---------------- Map Control ----------------
-int		control_map(t_game  *cub3d, char **map);
+int		control_map(t_game	*cub3d, char **map);
 int		control_extension(char	*path);
 int		check_same(char *str, char *str2);
 int		find_first_one(char *str);
@@ -182,6 +182,5 @@ char	**copy_map(char **map);
 int		take_map_size(char **map);
 void	take_player_pos(t_game *cub3d, char **map);
 void	print_line(char *str); // silinecek!!!!!!
-
 
 #endif

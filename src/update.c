@@ -64,9 +64,6 @@ int	update(void *param)
 	last_time = curr_time;
 	update_player(cub3d);
 	update_rays(cub3d);
-	#if DEBUG == 1
-	update_debug(cub3d);
-	#endif
 	draw_background(cub3d);
 	draw_walls(cub3d);
 	mlx_put_image_to_window(cub3d->mlx.mlx, cub3d->mlx.win.win,
