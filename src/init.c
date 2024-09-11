@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:36:34 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/25 15:00:01 by faata            ###   ########.fr       */
+/*   Updated: 2024/09/12 00:37:38 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 static void	init_player(t_game *cub3d)
 {
-	cub3d->player.move_speed = 10;
-	cub3d->player.camera_speed = 100;
+	cub3d->player.move_speed = 0.1;
+	cub3d->player.camera_speed = 2;
 }
 
 static void	init_tex(t_game *cub3d, t_img *tex, char *path)
 {
-	printf("path: %s\n", path);
 	tex->img = mlx_xpm_file_to_image(cub3d->mlx.mlx, path,
 			&tex->size_line, &tex->line_count);
 	if (tex->img == NULL)

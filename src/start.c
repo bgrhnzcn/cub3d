@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   start.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/12 00:37:33 by bgrhnzcn          #+#    #+#             */
+/*   Updated: 2024/09/12 00:37:34 by bgrhnzcn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	take_rgb_value(char	*values, t_color *background)
@@ -43,10 +55,10 @@ int	check_for_name(char *temp, t_game *cub3d, char *t1, int i)
 		cub3d->parse.ea_pth = ft_strtrim(t1 + i, " \t");
 	else if (check_same(sub, "F") == 0 && !cub3d->fl_cntrl++)
 		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
-				&cub3d->floor));
+				&cub3d->floor), EXIT_SUCCESS);
 	else if (check_same(sub, "C") == 0 && !cub3d->cl_cntrl++)
 		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
-				&cub3d->ceil));
+				&cub3d->ceil), EXIT_SUCCESS);
 	else
 		return (free(sub), free(t1), EXIT_FAILURE);
 	return (free(sub), free (t1), EXIT_SUCCESS);
@@ -69,8 +81,8 @@ int	take_all_textures_path(char	**temp, t_game *cub3d)
 			break ;
 		if (check_for_name(temp[i], cub3d, NULL, 0) == EXIT_FAILURE)
 		{
-			printf("You must give one acceptable\
-			value for each information!\n");
+			printf("You must give one acceptable ");
+			printf("value for each information!\n");
 			exit (EXIT_FAILURE);
 		}
 	}

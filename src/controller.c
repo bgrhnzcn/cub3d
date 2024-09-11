@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:31:37 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/08 01:32:43 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/09/11 23:50:07 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,12 @@ void	player_movement(t_game *cub3d, t_vec2 dir)
 	t_vec2		next_pos;
 
 	next_pos = ft_vec2_add(cub3d->player.pos,
-			ft_vec2_mul(dir, cub3d->player.move_speed * cub3d->delta_time));
+			ft_vec2_mul(dir, cub3d->player.move_speed));
 	player_collision(cub3d, next_pos);
 }
 
 void	player_camera(t_game *cub3d, t_bool rotate_dir)
 {
 	cub3d->player.dir = ft_vec2_rot(cub3d->player.dir,
-			cub3d->player.camera_speed * rotate_dir * cub3d->delta_time);
+			cub3d->player.camera_speed * rotate_dir);
 }

@@ -6,7 +6,7 @@
 #    By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 10:33:01 by bgrhnzcn          #+#    #+#              #
-#    Updated: 2024/09/07 10:49:12 by bgrhnzcn         ###   ########.fr        #
+#    Updated: 2024/09/12 00:32:02 by bgrhnzcn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ BOLD_MAGENTA = \033[1;35m
 BOLD_CYAN = \033[1;36m
 BOLD_WHITE = \033[1;37m
 
-
 ################################################################################
 #                                                                              #
 #                            Compile Settings                                  #
@@ -67,7 +66,8 @@ OS = $(shell uname 2>/dev/null || echo Unknown)
 
 SHELL = /bin/bash
 
-AUTHOR = bgrhnzcn
+AUTHOR = buozcan
+AUTHOR2 = faata
 
 all: header $(NAME)
 
@@ -91,14 +91,12 @@ LIB_DIR = ./lib
 
 # Source Files
 SRCS = $(SRC)/cub3d.c \
-	$(SRC)/ft_bresenham_line.c \
 	$(SRC)/draw.c \
 	$(SRC)/update.c \
 	$(SRC)/init.c \
 	$(SRC)/controller.c \
 	$(SRC)/raycast.c \
 	$(SRC)/texture.c \
-	$(SRC)/debug.c \
 	$(SRC)/start.c \
 	$(SRC)/parse_control.c \
 	$(SRC)/parse_utils.c \
@@ -267,7 +265,8 @@ header:
 		printf "$(BOLD_RED)#%.*s#\n$(RESET)", 48, $(SPACES); \
 		printf "$(BOLD_RED)#%.*s$(NAME)%.*s#\n$(RESET)", (49 - length("$(NAME)")) / 2, $(SPACES), (48 - length("$(NAME)")) / 2, $(SPACES); \
 		printf "$(BOLD_RED)#%.*s#\n$(RESET)", 48, $(SPACES); \
-		printf "$(BOLD_RED)#%.*sby: $(AUTHOR)%.*s#\n$(RESET)", (49 - length("by: $(AUTHOR)")) / 4 * 3, $(SPACES), (48 - length("by: $(AUTHOR)")) / 4, $(SPACES); \
+		printf "$(BOLD_RED)#%.*sby: $(AUTHOR)%.*s#\n$(RESET)", (48 - length("by: $(AUTHOR)")) / 4 * 3, $(SPACES), (52 - length("by: $(AUTHOR)")) / 4, $(SPACES); \
+		printf "$(BOLD_RED)#%.*sby: $(AUTHOR2)%.*s#\n$(RESET)", (48 - length("by: $(AUTHOR)")) / 4 * 3, $(SPACES), (60 - length("by: $(AUTHOR2)")) / 4, $(SPACES); \
 		printf "$(BOLD_RED)#%.*s#\n$(RESET)", 48, $(SPACES); \
 		printf "$(BOLD_RED)%.*s\n$(RESET)", 60, $(BAR); \
 		}'

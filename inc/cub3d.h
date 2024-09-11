@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/12 00:37:57 by bgrhnzcn          #+#    #+#             */
+/*   Updated: 2024/09/12 00:37:58 by bgrhnzcn         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include <time.h>
 # include <math.h>
 # include <stdio.h>
 # include <fcntl.h>
@@ -11,7 +22,6 @@
 
 # define HEIGHT			800
 # define WIDTH			800
-# define TILE_SIZE		40
 # define PLAYER_RAD		6
 # define PLAYER_SIZE	0.2
 # define MAX_RAY_LENGHT	100
@@ -79,7 +89,6 @@ typedef struct s_game
 {
 	t_hit		collisions[WIDTH];
 	float		coll_deg[WIDTH];
-	double		delta_time;
 	t_tile_map	map;
 	t_player	player;
 	t_input		inputs;
@@ -90,7 +99,6 @@ typedef struct s_game
 	t_color		floor;
 	t_color		ceil;
 	t_mlx		mlx;
-	t_mlx		debug;
 	t_bool		fl_cntrl;
 	t_bool		cl_cntrl;
 	t_parse		parse;
@@ -115,16 +123,6 @@ struct s_draw_hlpr
 	int		index;
 };
 
-//---------------------- Debug --------------------------
-
-void	init_debug(t_game *cub3d);
-void	draw_tile(t_img *debug, char tile, int x, int y);
-void	draw_map(t_game *cub3d);
-void	draw_rays(t_game *cub3d);
-void	draw_player(t_game *cub3d);
-void	debug_point(t_img *img, t_vec2 point);
-void	update_debug(t_game *cub3d);
-
 //---------------------- Raycast --------------------------
 
 void	raycast(t_game *cub3d, t_vec2 start, t_vec2 dir, t_hit *out);
@@ -132,7 +130,6 @@ void	raycast(t_game *cub3d, t_vec2 start, t_vec2 dir, t_hit *out);
 //---------------------- Init --------------------------
 
 void	init_game(t_game *cub3d);
-void	init_map(t_game *cub3d);
 
 //---------------------- Texture --------------------------
 
@@ -147,10 +144,6 @@ t_color	*get_tex_data(t_img *tex, float tex_x);
 
 int		update(void *param);
 
-//----------------- Bresenham Line Algorithm -----------------------
-
-void	ft_draw_line(t_mlx *dt, t_vec2 pt1, t_vec2 pt2, t_color color);
-
 //----------------------- Draw -----------------
 
 void	draw_background(t_game *cub3d);
@@ -164,6 +157,7 @@ void	player_movement(t_game *cub3d, t_vec2 dir);
 void	player_camera(t_game *cub3d, t_bool rotate_dir);
 
 //----------------------- Map -----------------
+
 int		take_all_things_from_doc(t_game *cub3d);
 int		control_names_and_values(char *sub, t_game *cub3d, int status);
 void	free_dpointer(char	**arr);
@@ -171,7 +165,9 @@ int		take_and_control_map(char	**res, t_game *cub3d);
 int		take_line_len(char	*str);
 void	check_for_spaces(char **line, t_game *cub3d, int i, int j);
 void	take_max_x(char **res, t_game *cub3d);
+
 //---------------- Map Control ----------------
+
 int		control_map(t_game	*cub3d, char **map);
 int		control_extension(char	*path);
 int		check_same(char *str, char *str2);

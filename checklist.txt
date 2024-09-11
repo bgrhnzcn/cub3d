@@ -1,9 +1,0 @@
-PARSING:
-
-1-) Başlarında yazana göre pdf'teki halleriyle texture'ların konumunu ve renk kodlarını alma.
-2-) Map'i alırken boşluklara X karakteri koyarak ve en uzun x değeri ve y değerini map.size.x ve map.size.y değerlerine atmak.
-
-MAP CONTROL:
-1-) Öncelikle verilen haritada N, W, E, S var mı diye kontrol edilmesi gerekli.
-2-) Verilen bu karakterlerden bir adet bulunması gerekiyor.
-2-) Haritanın etrafı kapalı olması gerekiyor.
