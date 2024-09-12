@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 15:53:18 by buozcan           #+#    #+#             */
-/*   Updated: 2024/09/12 00:37:50 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/09/12 16:56:33 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ int	control_for_path(char **argv)
 {
 	(void)argv;
 	return (EXIT_SUCCESS);
+}
+
+int	destroy_handler(void *param)
+{
+	(void)param;
+	exit(EXIT_SUCCESS);
 }
 
 int	main(int argc, char **argv)
@@ -32,7 +38,7 @@ int	main(int argc, char **argv)
 	mlx_hook(cub3d.mlx.win.win,
 		KeyRelease, (1 << 1), key_release_handler, &cub3d);
 	mlx_hook(cub3d.mlx.win.win,
-		Destroy, (1 << 17), key_release_handler, &cub3d);
+		Destroy, (1 << 17), destroy_handler, &cub3d);
 	mlx_loop_hook(cub3d.mlx.mlx, update, &cub3d);
 	mlx_loop(cub3d.mlx.mlx);
 }

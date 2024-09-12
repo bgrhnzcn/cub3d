@@ -1,8 +1,8 @@
 
-NO /home/bgrhnzcn/cub3d/textures/epic.xpm
-SO /home/bgrhnzcn/cub3d/textures/Icon2.xpm
-EA /home/bgrhnzcn/cub3d/textures/Icon10.xpm
-WE /home/bgrhnzcn/cub3d/textures/Icon6.xpm
+NO ./textures/epic.xpm
+SO ./textures/Icon2.xpm
+EA ./textures/Icon10.xpm
+WE ./textures/Icon6.xpm
 
 F 50,50,50
 C 135,206,235
