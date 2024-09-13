@@ -74,9 +74,9 @@ int	check_for_undefined_char(char **map)
 		j = find_first_one(map[i]) - 1;
 		while (++j <= find_last_one(map[i]))
 		{
-			if (ft_strchr("10WSNE", map[i][j]) == NULL)
+			if (ft_strchr("10WSNE \t", map[i][j]) == NULL)
 			{
-				printf("There is an undefined char in map!\n");
+				printf("There is an undefined char '%c' in map!\n", map[i][j]);
 				return (EXIT_FAILURE);
 			}
 		}

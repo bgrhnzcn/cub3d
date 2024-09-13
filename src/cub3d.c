@@ -18,9 +18,10 @@ int	control_for_path(char **argv)
 	return (EXIT_SUCCESS);
 }
 
-int	destroy_handler(void *param)
+int	destroy_handler(t_game *param)
 {
-	(void)param;
+	free (param->map.tiles);
+	mlx_destroy_image(param->mlx.mlx, param->mlx.img.img);
 	exit(EXIT_SUCCESS);
 }
 

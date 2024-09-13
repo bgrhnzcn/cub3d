@@ -29,10 +29,10 @@ int	flood_fill(char **map, int x, int y, t_game *cub3d)
 	if (map[y][x] == '1')
 		return (ret);
 	map[y][x] = '1';
-	ret += flood_fill(map, x + 1, y, cub3d);
-	ret += flood_fill(map, x - 1, y, cub3d);
 	ret += flood_fill(map, x, y + 1, cub3d);
 	ret += flood_fill(map, x, y - 1, cub3d);
+	ret += flood_fill(map, x + 1, y, cub3d);
+	ret += flood_fill(map, x - 1, y, cub3d);
 	return (ret);
 }
 
@@ -77,10 +77,8 @@ int	control_map(t_game	*cub3d, char	**map)
 	cub3d->map.size.y = take_map_size(map);
 	if (check_for_row(map) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
-	if (check_for_undefined_char(map) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
 	cub3d->parse.retval = 0;
-	cub3d->parse.retval += flood_fill(cpy, (cub3d->player.pos.x + 0.5),
+	cub3d->parse.retval += flood_fill(cpy, (cub3d->player.pos.x - 0.5),
 			(cub3d->player.pos.y - 0.5), cub3d);
 	free_dpointer(cpy);
 	if (cub3d->parse.retval != EXIT_SUCCESS)
