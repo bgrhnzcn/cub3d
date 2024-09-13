@@ -44,6 +44,7 @@ typedef union u_color
 
 typedef enum e_bool
 {
+	error = -1,
 	false,
 	true
 }	t_bool;
