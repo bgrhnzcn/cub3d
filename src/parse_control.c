@@ -34,6 +34,7 @@ int	control_extension(char	*path)
 void	check_for_spaces(char **line, t_game *cub3d, int i, int j)
 {
 	char	*res;
+	int		x;
 
 	res = malloc(sizeof(char) * (cub3d->map.size.x + 1));
 	if (!res)
@@ -42,9 +43,13 @@ void	check_for_spaces(char **line, t_game *cub3d, int i, int j)
 	{
 		if ((*line)[i] == '\t')
 		{
-			res[j++] = 'X';
-			res[j++] = 'X';
-			res[j++] = 'X';
+			x = 4 - (i % 4);
+			while (x-- > 0)
+				res[j++] = 'X';
+			i++;
+		}
+		else if ((*line)[i] == ' ')
+		{
 			res[j++] = 'X';
 			i++;
 		}

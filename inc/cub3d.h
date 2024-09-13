@@ -177,6 +177,6 @@ int		check_for_undefined_char(char **map);
 char	**copy_map(char **map);
 int		take_map_size(char **map);
 void	take_player_pos(t_game *cub3d, char **map);
-void	print_line(char *str); // silinecek!!!!!!
+void	print_map(char **str); // silinecek!!!!!!
 
 #endif
