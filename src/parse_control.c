@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 00:37:43 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/09/12 00:37:44 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/09/15 19:56:13 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	check_for_spaces(char **line, t_game *cub3d, int i, int j)
 	while (j < cub3d->map.size.x)
 		res[j++] = 'X';
 	res[j] = '\0';
-	free (*line);
+	free(*line);
 	*line = res;
 }
 
