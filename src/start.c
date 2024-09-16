@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 00:37:33 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/09/15 19:53:40 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/09/12 00:37:34 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ int	check_for_name(char *temp, t_game *cub3d, char *t1, int i)
 	else if (check_same(sub, "EA") == 0 && !cub3d->parse.ea_pth)
 		cub3d->parse.ea_pth = ft_strtrim(t1 + i, " \t");
 	else if (check_same(sub, "F") == 0 && !cub3d->fl_cntrl++)
-		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"), //<< used after free(t1)
+		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
 				&cub3d->floor));
 	else if (check_same(sub, "C") == 0 && !cub3d->cl_cntrl++)
-		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"), //<< used after free(t1)
+		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
 				&cub3d->ceil));
 	else
 		return (free(sub), free(t1), EXIT_FAILURE);

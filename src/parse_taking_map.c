@@ -12,14 +12,6 @@
 
 #include "cub3d.h"
 
-void	print_map(char **str)
-{
-	int i = -1;
-
-	while (str[++i])
-		printf("map: %s\n", str[i]);
-}
-
 void	convert_to_one(char *line)
 {
 	int	i;
@@ -67,7 +59,7 @@ int	take_and_control_map(char	**res, t_game *cub3d)
 	take_max_x(res, cub3d);
 	cpy = copy_map(res);
 	while (res[++i])
-		check_for_spaces(&res[i], cub3d, 0, 0);
+		check_for_spaces(&res[i], cub3d, 0);
 	if (check_for_undefined_char(cpy) || control_map(cub3d, res))
 		return (free_dpointer(cpy), EXIT_FAILURE);
 	cub3d->map.tiles = take_map_in_line(res);
