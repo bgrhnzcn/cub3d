@@ -163,7 +163,7 @@ int		control_names_and_values(char *sub, t_game *cub3d, int status);
 void	free_dpointer(char	**arr);
 int		take_and_control_map(char	**res, t_game *cub3d);
 int		take_line_len(char	*str);
-void	check_for_spaces(char **line, t_game *cub3d, int i, int j);
+void	check_for_spaces(char **line, t_game *cub3d, int j);
 void	take_max_x(char **res, t_game *cub3d);
 
 //---------------- Map Control ----------------
@@ -177,6 +177,5 @@ int		check_for_undefined_char(char **map);
 char	**copy_map(char **map);
 int		take_map_size(char **map);
 void	take_player_pos(t_game *cub3d, char **map);
-void	print_map(char **str); // silinecek!!!!!!
 
 #endif

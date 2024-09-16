@@ -31,31 +31,39 @@ int	control_extension(char	*path)
 	return (EXIT_FAILURE);
 }
 
-void	check_for_spaces(char **line, t_game *cub3d, int i, int j)
+void	adding_x_to_line(char	**line, char *res, int *j)
 {
-	char	*res;
-	int		x;
+	int	i;
+	int	x;
 
-	res = malloc(sizeof(char) * (cub3d->map.size.x + 1));
-	if (!res)
-		perror("Malloc!\n");
+	i = 0;
 	while ((*line)[i])
 	{
 		if ((*line)[i] == '\t')
 		{
 			x = 4 - (i % 4);
-			while (x-- > 0)
-				res[j++] = 'X';
+			while (x-- >= 0)
+				res[(*j)++] = 'X';
 			i++;
 		}
 		else if ((*line)[i] == ' ')
 		{
-			res[j++] = 'X';
+			res[(*j)++] = 'X';
 			i++;
 		}
 		else
-			res[j++] = (*line)[i++];
+			res[(*j)++] = (*line)[i++];
 	}
+}
+
+void	check_for_spaces(char **line, t_game *cub3d, int j)
+{
+	char	*res;
+
+	res = malloc(sizeof(char) * (cub3d->map.size.x + 1));
+	if (!res)
+		perror("Malloc!\n");
+	adding_x_to_line(line, res, &j);
 	while (j < cub3d->map.size.x)
 		res[j++] = 'X';
 	res[j] = '\0';
