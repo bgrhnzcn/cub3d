@@ -220,7 +220,7 @@ endif # Common
 MLX_COMP = awk '{ \
 		if ($$1 == "FAIL") { exit 1} \
 		else if ($$1 == "gcc") { printf "$(BOLD_GREEN)%9s $(BOLD_BLUE)%-30s $(BOLD_GREEN)%-4s\r$(RESET)", "Compiling" , $$5, "[OK]" } \
-		fflush() }' <(make 2>/dev/null || echo "FAIL");\
+		fflush() }' <(make -j16 2>/dev/null || echo "FAIL");\
 	if [ $$? -eq 1 ]; then \
 		awk 'BEGIN{ printf "$(BOLD_RED)%9s $(BOLD_BLUE)%-14s $(BOLD_RED)%-4s\n$(RESET)", "MiniLibX Compilation Failed!" , NULL, "[KO]" }'; \
 		exit 1;\

@@ -34,19 +34,11 @@ int	control_extension(char	*path)
 void	adding_x_to_line(char	**line, char *res, int *j)
 {
 	int	i;
-	int	x;
 
 	i = 0;
 	while ((*line)[i])
 	{
-		if ((*line)[i] == '\t')
-		{
-			x = 4 - (i % 4);
-			while (x-- >= 0)
-				res[(*j)++] = 'X';
-			i++;
-		}
-		else if ((*line)[i] == ' ')
+		if ((*line)[i] == ' ')
 		{
 			res[(*j)++] = 'X';
 			i++;
