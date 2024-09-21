@@ -88,3 +88,9 @@ int	control_map(t_game	*cub3d, char	**map)
 	}
 	return (EXIT_SUCCESS);
 }
+
+void	free_if(void *content)
+{
+	if (content != NULL)
+		free(content);
+}

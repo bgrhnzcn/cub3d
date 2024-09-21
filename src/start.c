@@ -67,17 +67,19 @@ int	check_for_name(char *temp, t_game *cub3d, char *t1, int i)
 
 int	take_all_textures_path(char	**temp, t_game *cub3d)
 {
-	int	i;
+	char	*trim;
+	int		i;
 
 	i = -1;
-	cub3d->parse.no_pth = NULL;
-	cub3d->parse.ea_pth = NULL;
-	cub3d->parse.we_pth = NULL;
-	cub3d->parse.so_pth = NULL;
-	cub3d->fl_cntrl = false;
-	cub3d->cl_cntrl = false;
 	while (temp[++i])
 	{
+		trim = ft_strtrim(temp[i], " \n\t");
+		if (trim[0] == '\0')
+		{
+			free (trim);
+			continue ;
+		}
+		free (trim);
 		if (!control_names_and_values(NULL, cub3d, 0))
 			break ;
 		if (check_for_name(temp[i], cub3d, NULL, 0))
@@ -92,29 +94,26 @@ int	take_all_textures_path(char	**temp, t_game *cub3d)
 	return (EXIT_SUCCESS);
 }
 
-void	size_of_map(char ***res, int fd)
+char	**turn_map_list2array(t_list *list, int size)
 {
-	char	*temp;
-	char	*temp1;
-	char	*temp2;
+	char	**res;
+	t_list	*temp;
+	int		i;
 
-	temp = get_next_line(fd);
-	if (!temp)
+	res = malloc(size * sizeof(char *));
+	if (res == NULL)
+		return (NULL);
+	temp = list;
+	i = 0;
+	while (temp != NULL && temp->content != NULL)
 	{
-		*res = NULL;
-		return ;
+		res[i] = ft_strtrim(temp->content, "\n");
+		i++;
+		temp = temp->next;
 	}
-	temp1 = get_next_line(fd);
-	while (temp1)
-	{
-		temp2 = ft_strjoin(temp, temp1);
-		free (temp);
-		free (temp1);
-		temp1 = get_next_line(fd);
-		temp = temp2;
-	}
-	*res = ft_split(temp, '\n');
-	free (temp);
+	res[i] = NULL;
+	ft_lstclear(&list, free_if);
+	return (res);
 }
 
 int	take_all_things_from_doc(t_game *cub3d)

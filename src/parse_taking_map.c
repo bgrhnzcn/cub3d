@@ -66,3 +66,25 @@ int	take_and_control_map(char	**res, t_game *cub3d)
 	convert_to_one(cub3d->map.tiles);
 	return (free_dpointer(cpy), EXIT_SUCCESS);
 }
+
+void	size_of_map(char ***res, int fd)
+{
+	t_list	*list;
+	char	*temp;
+
+	list = ft_lstnew(NULL);
+	temp = get_next_line(fd);
+	if (!temp)
+	{
+		free(list);
+		*res = NULL;
+		return ;
+	}
+	list->content = temp;
+	while (temp)
+	{
+		temp = get_next_line(fd);
+		ft_lstadd_back(&list, ft_lstnew(temp));
+	}
+	*res = turn_map_list2array(list, ft_lstsize(list));
+}
