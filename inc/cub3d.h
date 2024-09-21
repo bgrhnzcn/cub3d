@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 00:37:57 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/09/12 00:37:58 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/09/16 18:20:28 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 # include "get_next_line_bonus.h"
 # include "libft.h"
 
-# define HEIGHT			800
-# define WIDTH			800
+# define HEIGHT			1600
+# define WIDTH			2000
 # define PLAYER_RAD		6
 # define PLAYER_SIZE	0.2
 # define MAX_RAY_LENGHT	100
@@ -130,6 +130,7 @@ void	raycast(t_game *cub3d, t_vec2 start, t_vec2 dir, t_hit *out);
 //---------------------- Init --------------------------
 
 void	init_game(t_game *cub3d);
+void	terminate_prog(t_game *cub3d, int status);
 
 //---------------------- Texture --------------------------
 

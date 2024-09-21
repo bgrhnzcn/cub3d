@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:27:56 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/24 17:35:09 by faata            ###   ########.fr       */
+/*   Updated: 2024/09/16 18:20:18 by buozcan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	draw_walls(t_game *cub3d)
 	int		i;
 
 	i = 0;
-	while (i < HEIGHT)
+	while (i < WIDTH)
 	{
 		if (ft_vec2_equ(cub3d->collisions[i].pos, g_vec2_null))
 		{
