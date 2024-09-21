@@ -165,6 +165,8 @@ int		take_and_control_map(char	**res, t_game *cub3d);
 int		take_line_len(char	*str);
 void	check_for_spaces(char **line, t_game *cub3d, int j);
 void	take_max_x(char **res, t_game *cub3d);
+void	size_of_map(char ***res, int fd);
+char	**turn_map_list2array(t_list *list, int size);
 
 //---------------- Map Control ----------------
 
@@ -177,5 +179,6 @@ int		check_for_undefined_char(char **map);
 char	**copy_map(char **map);
 int		take_map_size(char **map);
 void	take_player_pos(t_game *cub3d, char **map);
+void	free_if(void *content);
 
 #endif

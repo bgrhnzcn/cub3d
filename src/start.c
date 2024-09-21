@@ -71,12 +71,6 @@ int	take_all_textures_path(char	**temp, t_game *cub3d)
 	int		i;
 
 	i = -1;
-	cub3d->parse.no_pth = NULL;
-	cub3d->parse.ea_pth = NULL;
-	cub3d->parse.we_pth = NULL;
-	cub3d->parse.so_pth = NULL;
-	cub3d->fl_cntrl = false;
-	cub3d->cl_cntrl = false;
 	while (temp[++i])
 	{
 		trim = ft_strtrim(temp[i], " \n\t");
@@ -100,12 +94,6 @@ int	take_all_textures_path(char	**temp, t_game *cub3d)
 	return (EXIT_SUCCESS);
 }
 
-void	free_if(void *content)
-{
-	if (content != NULL)
-		free(content);
-}
-
 char	**turn_map_list2array(t_list *list, int size)
 {
 	char	**res;
@@ -126,28 +114,6 @@ char	**turn_map_list2array(t_list *list, int size)
 	res[i] = NULL;
 	ft_lstclear(&list, free_if);
 	return (res);
-}
-
-void	size_of_map(char ***res, int fd)
-{
-	t_list	*list;
-	char	*temp;
-
-	list = ft_lstnew(NULL);
-	temp = get_next_line(fd);
-	if (!temp)
-	{
-		free(list);
-		*res = NULL;
-		return ;
-	}
-	list->content = temp;
-	while (temp)
-	{
-		temp = get_next_line(fd);
-		ft_lstadd_back(&list, ft_lstnew(temp));
-	}
-	*res = turn_map_list2array(list, ft_lstsize(list));
 }
 
 int	take_all_things_from_doc(t_game *cub3d)
