@@ -99,6 +99,7 @@ typedef struct s_game
 	t_color		floor;
 	t_color		ceil;
 	t_mlx		mlx;
+	t_img		mini_map;
 	t_bool		fl_cntrl;
 	t_bool		cl_cntrl;
 	t_parse		parse;
@@ -149,6 +150,7 @@ int		update(void *param);
 
 void	draw_background(t_game *cub3d);
 void	draw_walls(t_game *cub3d);
+void	draw_minimap(t_game *cub3d);
 
 //----------------------- Controller -----------------
 
