@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 00:37:57 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/09/16 18:20:28 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/09/23 19:53:16 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define WIDTH			800
 # define PLAYER_RAD		6
 # define PLAYER_SIZE	0.2
-# define MAX_RAY_LENGHT	100
+# define MAX_RAY_LENGHT	50
 
 typedef union u_vec2i
 {
@@ -122,6 +122,7 @@ struct s_draw_hlpr
 	float	line_height;
 	float	tex_x;
 	int		index;
+	float	dist;
 };
 
 //---------------------- Raycast --------------------------

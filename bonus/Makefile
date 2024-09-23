@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+         #
+#    By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/08/30 10:33:01 by bgrhnzcn          #+#    #+#              #
-#    Updated: 2024/09/16 18:14:49 by buozcan          ###   ########.fr        #
+#    Updated: 2024/09/23 14:58:27 by bgrhnzcn         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ NAME = cub3D
 CC = gcc
 
 # Compiler Flags
-CFLAGS = -g -Wall -Wextra -Werror $(DEBUG)
+CFLAGS = -g -Wall -Wextra
 
 # Make Flags
 MAKEFLAGS += --no-print-directory

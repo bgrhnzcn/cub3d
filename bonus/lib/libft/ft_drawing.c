@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 15:42:40 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/06/20 22:03:20 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/09/23 16:16:55 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_put_pixel(t_img *img, int x, int y, t_color color)
 {
-	if ((x >= 0 && x < img->width) || (y >= 0 && y < img->height))
+	if (x >= 0 && x < img->width && y >= 0 && y < img->height)
 		img->data[x + (img->width * y)] = color;
 }
 

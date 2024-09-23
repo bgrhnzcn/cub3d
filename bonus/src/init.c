@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: buozcan <buozcan@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/09 12:36:34 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/09/16 18:07:01 by buozcan          ###   ########.fr       */
+/*   Updated: 2024/09/23 20:25:26 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ int	init_img(void *mlx, t_img *img, int width, int height)
 		return (EXIT_FAILURE);
 	img->data = (t_color *)mlx_get_data_addr(img->img,
 	&img->bits_per_pixel, &img->width, &img->endian);
-	img->width = width;
-	img->height = height;
 	if (!img->data)
 	{
 		mlx_destroy_image(mlx, img->img);
 		return (EXIT_FAILURE);
 	}
+	img->width = width;
+	img->height = height;
 	return (EXIT_SUCCESS);
 }
 
@@ -63,16 +63,8 @@ void	init_win(t_game *cub3d)
 			WIDTH, HEIGHT, "cub3d - game");
 	if (cub3d->mlx.win.win == NULL)
 		terminate_prog(cub3d, EXIT_FAILURE);
-	cub3d->mlx.img.img = mlx_new_image(cub3d->mlx.mlx,
-			cub3d->mlx.win.width, cub3d->mlx.win.height);
-	if (cub3d->mlx.img.img == NULL)
+	if (init_img(cub3d->mlx.mlx, &cub3d->mlx.img, cub3d->mlx.win.width, cub3d->mlx.win.height))
 		terminate_prog(cub3d, EXIT_FAILURE);
-	cub3d->mlx.img.data = (t_color *)mlx_get_data_addr(cub3d->mlx.img.img,
-			&cub3d->mlx.img.bits_per_pixel,
-			&cub3d->mlx.img.width, &cub3d->mlx.img.endian);
-	if (cub3d->mlx.img.data == NULL)
-		terminate_prog(cub3d, EXIT_FAILURE);
-	cub3d->mlx.img.width /= 4;
 }
 
 void	init_game(t_game *cub3d)
@@ -81,6 +73,10 @@ void	init_game(t_game *cub3d)
 	cub3d->mlx.mlx = mlx_init();
 	if (take_all_things_from_doc(cub3d))
 		terminate_prog(cub3d, EXIT_FAILURE);
+	//DEBUG
+	cub3d->floor = g_red;
+	cub3d->ceil = g_blue;
+	//DEBUG
 	init_tex(cub3d, &cub3d->tex_north, cub3d->parse.no_pth);
 	init_tex(cub3d, &cub3d->tex_south, cub3d->parse.so_pth);
 	init_tex(cub3d, &cub3d->tex_east, cub3d->parse.ea_pth);
@@ -89,7 +85,7 @@ void	init_game(t_game *cub3d)
 	mirror_tex(&cub3d->tex_east);
 	init_win(cub3d);
 	init_player(cub3d);
-	if (init_img(cub3d->mlx.mlx, &cub3d->mini_map, WIDTH, WIDTH))
+	if (init_img(cub3d->mlx.mlx, &cub3d->mini_map, WIDTH / 3, WIDTH / 3))
 		terminate_prog(cub3d, EXIT_FAILURE);
 	ft_fill_img(&cub3d->mini_map, g_black);
 	mlx_put_image_to_window(cub3d->mlx.mlx, cub3d->mlx.win.win,

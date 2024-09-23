@@ -54,4 +54,5 @@ dkms.conf
 .vscode/
 cub3d
 lib/mlx/
+bonus/lib/mlx
 log/

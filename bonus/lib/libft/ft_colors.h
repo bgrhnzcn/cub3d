@@ -6,7 +6,7 @@
 /*   By: bgrhnzcn <bgrhnzcn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 21:34:36 by bgrhnzcn          #+#    #+#             */
-/*   Updated: 2024/07/20 20:12:41 by bgrhnzcn         ###   ########.fr       */
+/*   Updated: 2024/09/23 18:36:21 by bgrhnzcn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ static const t_color	g_gray = (t_color){.value = 0x00808080};
 static const t_color	g_magenta = (t_color){.value = 0x00ff00ff};
 static const t_color	g_cyan = (t_color){.value = 0x0000ffff};
 static const t_color	g_yellow = (t_color){.value = 0x00ffff00};
-//static const t_color	g_red = (t_color){.value = 0x00ff0000};
-//static const t_color	g_red = (t_color){.value = 0x00ff0000};
+static const t_color	g_brown = (t_color){.value = 0x005C4033};
+static const t_color	g_dark_grey = (t_color){.value = 0x00404040};
 //static const t_color	g_red = (t_color){.value = 0x00ff0000};
 
 #endif
