@@ -207,10 +207,10 @@ endif
 $(MLX_DIR):
 ifeq ($(OS), Linux) # Linux
 	@echo "Downloading MiniLib x For Linux..."
-	@curl -s https://cdn.intra.42.fr/document/document/18343/minilibx-linux.tgz -o $(MLX_DIR).tgz
+	@curl -s https://cdn.intra.42.fr/document/document/28880/minilibx-linux.tgz -o $(MLX_DIR).tgz
 else ifeq ($(OS), Darwin) # MacOS
 	@echo "Downloading MiniLibx For MacOS..."
-	@curl -s https://cdn.intra.42.fr/document/document/18344/minilibx_opengl.tgz -o $(MLX_DIR).tgz
+	@curl -s https://cdn.intra.42.fr/document/document/28881/minilibx_opengl.tgz -o $(MLX_DIR).tgz
 endif # Common
 	@mkdir $(MLX_DIR)
 	@tar xvfz $(MLX_DIR).tgz --strip 1 -C $(MLX_DIR) > /dev/null 2> /dev/null
