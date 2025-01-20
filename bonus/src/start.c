@@ -45,23 +45,49 @@ int	check_for_name(char *temp, t_game *cub3d, char *t1, int i)
 		i++;
 	sub = ft_substr(t1, 0, i);
 	if (control_names_and_values(sub, cub3d, 1))
+	{
+		printf("deneme\n");
 		return (free (t1), free (sub), EXIT_FAILURE);
+	}
 	if (check_same(sub, "NO") == 0 && !cub3d->parse.no_pth)
+	{
+		printf("deneme1\n");
 		cub3d->parse.no_pth = ft_strtrim(t1 + i, " \t");
+	}
 	else if (check_same(sub, "SO") == 0 && !cub3d->parse.so_pth)
+		{
+			printf("deneme2\n");
 		cub3d->parse.so_pth = ft_strtrim(t1 + i, " \t");
+		}
 	else if (check_same(sub, "WE") == 0 && !cub3d->parse.we_pth)
+		{
+			printf("deneme3\n");
 		cub3d->parse.we_pth = ft_strtrim(t1 + i, " \t");
+		}
 	else if (check_same(sub, "EA") == 0 && !cub3d->parse.ea_pth)
+		{
+			printf("deneme4\n");
 		cub3d->parse.ea_pth = ft_strtrim(t1 + i, " \t");
+		}
 	else if (check_same(sub, "F") == 0 && !cub3d->fl_cntrl++)
+		{
+			printf("deneme5\n");
 		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
 				&cub3d->floor), EXIT_SUCCESS);
+		}
 	else if (check_same(sub, "C") == 0 && !cub3d->cl_cntrl++)
+		{
+			printf("deneme6\n");
 		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
 				&cub3d->ceil), EXIT_SUCCESS);
+		}
 	else
+	{
+		printf("deneme7\n");
 		return (free(sub), free(t1), EXIT_FAILURE);
+
+	}
+	printf("deneme8\n");
 	return (free(sub), free (t1), EXIT_SUCCESS);
 }
 
