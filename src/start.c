@@ -17,19 +17,31 @@ int	take_rgb_value(char	*values, t_color *background)
 	char	**res;
 	int		i;
 
+	printf("values: %s\n", values);
 	res = ft_split(values, ',');
 	free (values);
 	i = -1;
 	if (!res)
+	{
+		printf("err1");
 		return (EXIT_FAILURE);
+	}
 	while (res[++i])
-		;
+	{
+		printf("res: %s\n", res[i]);
+	}
 	if (i != 3)
+	{
+		printf("err2\n");
 		return (free_dpointer(res), EXIT_FAILURE);
+	}
 	if (ft_atoi(res[0]) > 255 || ft_atoi(res[0]) < 0 || ft_atoi(res[1]) > 255
 		|| ft_atoi(res[1]) < 0 || ft_atoi(res[2]) > 255
 		|| ft_atoi(res[2]) < 0)
+		{
+			printf("err3");
 		return (free_dpointer(res), EXIT_FAILURE);
+		}
 	background->red = ft_atoi(res[0]);
 	background->green = ft_atoi(res[1]);
 	background->blue = ft_atoi(res[2]);
@@ -38,6 +50,7 @@ int	take_rgb_value(char	*values, t_color *background)
 
 int	check_for_name(char *temp, t_game *cub3d, char *t1, int i)
 {
+	int		temp_rgb_value;
 	char	*sub;
 
 	t1 = ft_strtrim(temp, " \t");
@@ -45,23 +58,49 @@ int	check_for_name(char *temp, t_game *cub3d, char *t1, int i)
 		i++;
 	sub = ft_substr(t1, 0, i);
 	if (control_names_and_values(sub, cub3d, 1))
+	{
+		printf("deneme1\n");
 		return (free (t1), free (sub), EXIT_FAILURE);
+	}	
 	if (check_same(sub, "NO") == 0 && !cub3d->parse.no_pth)
+	{
+		printf("deneme2\n");
 		cub3d->parse.no_pth = ft_strtrim(t1 + i, " \t");
+	}	
 	else if (check_same(sub, "SO") == 0 && !cub3d->parse.so_pth)
+		{
+			printf("deneme3\n");
 		cub3d->parse.so_pth = ft_strtrim(t1 + i, " \t");
+		}
 	else if (check_same(sub, "WE") == 0 && !cub3d->parse.we_pth)
+		{
+			printf("deneme4\n");
 		cub3d->parse.we_pth = ft_strtrim(t1 + i, " \t");
+		}
 	else if (check_same(sub, "EA") == 0 && !cub3d->parse.ea_pth)
+		{
+			printf("deneme5\n");
 		cub3d->parse.ea_pth = ft_strtrim(t1 + i, " \t");
+		}
 	else if (check_same(sub, "F") == 0 && !cub3d->fl_cntrl++)
-		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
-				&cub3d->floor));
+		{
+			printf("deneme6\n");
+			printf("trim: %s\n", ft_strtrim(t1 + i, " \t"));
+			temp_rgb_value = take_rgb_value(ft_strtrim(t1 + i, " \t"), &cub3d->floor);
+			return (free(t1), free(sub), temp_rgb_value);
+		}
 	else if (check_same(sub, "C") == 0 && !cub3d->cl_cntrl++)
-		return (free (sub), free (t1), take_rgb_value(ft_strtrim(t1 + i, " \t"),
-				&cub3d->ceil));
+		{
+			printf("deneme7\n");
+			temp_rgb_value = take_rgb_value(ft_strtrim(t1 + i, " \t"), &cub3d->ceil);
+				return (free(t1), free(sub), temp_rgb_value);
+		}
 	else
+	{
+		printf("deneme8\n");
 		return (free(sub), free(t1), EXIT_FAILURE);
+	}
+	printf("deneme9\n");
 	return (free(sub), free (t1), EXIT_SUCCESS);
 }
 
