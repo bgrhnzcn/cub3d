@@ -56,3 +56,4 @@ cub3d
 lib/mlx/
 bonus/lib/mlx
 log/
+compile_flags.txt

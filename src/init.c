@@ -14,8 +14,8 @@
 
 static void	init_player(t_game *cub3d)
 {
-	cub3d->player.move_speed = 0.1;
-	cub3d->player.camera_speed = 2;
+	cub3d->player.move_speed = 0.05;
+	cub3d->player.camera_speed = 0.6;
 }
 
 static void	init_tex(t_game *cub3d, t_img *tex, char *path)
