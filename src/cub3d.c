@@ -53,6 +53,11 @@ void	terminate_prog(t_game *cub3d, int status)
 		mlx_destroy_image(cub3d->mlx.mlx, cub3d->tex_south.img);
 	if (cub3d->tex_west.img != NULL)
 		mlx_destroy_image(cub3d->mlx.mlx, cub3d->tex_west.img);
+	if (cub3d->mlx.mlx != NULL)
+	{
+		mlx_destroy_display(cub3d->mlx.mlx);
+		free(cub3d->mlx.mlx);
+	}
 	if (status == EXIT_FAILURE)
 		printf("Error!\n");
 	exit(status);
