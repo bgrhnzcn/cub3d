@@ -20,7 +20,7 @@ int	flood_fill(char **map, int x, int y, t_game *cub3d)
 	if (cub3d->map.size.x < 3 || cub3d->map.size.y < 3)
 		return (1);
 	if (x >= cub3d->map.size.x || y >= cub3d->map.size.y || y < 0 || x < 0)
-		return (ret);
+		return (1);
 	if (map[y][x] == 'X' || map[y][x] == '\0')
 	{
 		ret = 1;
@@ -34,6 +34,21 @@ int	flood_fill(char **map, int x, int y, t_game *cub3d)
 	ret += flood_fill(map, x + 1, y, cub3d);
 	ret += flood_fill(map, x - 1, y, cub3d);
 	return (ret);
+}
+
+void flood_fill_ever(char **map, int x, int y, t_game *cub3d)
+{
+	if (cub3d->map.size.x < 3 || cub3d->map.size.y < 3)
+		return ;
+	if (x >= cub3d->map.size.x || y >= cub3d->map.size.y || y < 0 || x < 0)
+		return ;
+	if (map[y][x] == 'X' || map[y][x] == 'Z')
+		return ;
+	map[y][x] = 'Z';
+	flood_fill_ever(map, x, y + 1, cub3d);
+	flood_fill_ever(map, x, y - 1, cub3d);
+	flood_fill_ever(map, x + 1, y, cub3d);
+	flood_fill_ever(map, x - 1, y, cub3d);
 }
 
 int	check_for_char(char **map, int i, int j, int *control)
@@ -68,6 +83,22 @@ them!\n"), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
+int check_doubles(char **map)
+{
+	int i;
+	int	j;
+
+	i = -1;
+	while (map[++i])
+	{
+		j = -1;
+		while (map[i][++j])
+			if (!ft_strchr("ZX", map[i][j]))
+				return (EXIT_FAILURE);
+	}
+	return (EXIT_SUCCESS);
+}
+
 int	control_map(t_game	*cub3d, char	**map)
 {
 	char	**cpy;
@@ -80,12 +111,18 @@ int	control_map(t_game	*cub3d, char	**map)
 	cub3d->parse.retval = 0;
 	cub3d->parse.retval += flood_fill(cpy, (cub3d->player.pos.x - 0.5),
 			(cub3d->player.pos.y - 0.5), cub3d);
-	free_dpointer(cpy);
 	if (cub3d->parse.retval != EXIT_SUCCESS)
 	{
 		printf("There is a hole in map.\n");
 		return (EXIT_FAILURE);
 	}
+	flood_fill_ever(cpy, (cub3d->player.pos.x - 0.5), (cub3d->player.pos.y - 0.5), cub3d);
+	if (check_doubles(cpy))
+	{
+		printf("Double map.\n");
+		return (EXIT_FAILURE);
+	}
+	free_dpointer(cpy);
 	return (EXIT_SUCCESS);
 }
 
