@@ -20,7 +20,6 @@ static void	init_player(t_game *cub3d)
 
 static void	init_tex(t_game *cub3d, t_img *tex, char *path)
 {
-	printf("path: %s\n", path);
 	tex->img = mlx_xpm_file_to_image(cub3d->mlx.mlx, path,
 			&tex->size_line, &tex->line_count);
 	if (tex->img == NULL)
