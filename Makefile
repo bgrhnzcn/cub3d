@@ -111,6 +111,7 @@ SRCS = $(SRC)/cub3d.c \
 	$(SRC)/parse_taking_map.c \
 	$(SRC)/parse_map_control.c \
 	$(SRC)/map_control_utils.c \
+	$(SRC)/flood_fills.c \
 
 # Object Directory Creation
 $(OBJ):
