@@ -15,7 +15,6 @@
 
 # ifdef __linux__
 
-#  include <X11/keysym.h>
 #  define ESC_KEY 0xff1b
 #  define X_KEY 0x0078
 #  define Z_KEY 0x007a
