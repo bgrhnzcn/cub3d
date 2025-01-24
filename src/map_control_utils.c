@@ -83,3 +83,25 @@ int	check_for_undefined_char(char **map)
 	}
 	return (EXIT_SUCCESS);
 }
+
+char	**turn_map_list2array(t_list *list, int size)
+{
+	char	**res;
+	t_list	*temp;
+	int		i;
+
+	res = malloc(size * sizeof(char *));
+	if (res == NULL)
+		return (NULL);
+	temp = list;
+	i = 0;
+	while (temp != NULL && temp->content != NULL)
+	{
+		res[i] = ft_strtrim(temp->content, "\n");
+		i++;
+		temp = temp->next;
+	}
+	res[i] = NULL;
+	ft_lstclear(&list, free_if);
+	return (res);
+}

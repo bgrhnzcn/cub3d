@@ -181,5 +181,8 @@ char	**copy_map(char **map);
 int		take_map_size(char **map);
 void	take_player_pos(t_game *cub3d, char **map);
 void	free_if(void *content);
+int		flood_fill(char **map, int x, int y, t_game *cub3d);
+void	flood_fill_ever(char **map, int x, int y, t_game *cub3d);
+char	**turn_map_list2array(t_list *list, int size);
 
 #endif

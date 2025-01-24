@@ -36,17 +36,10 @@ int	take_rgb_value(char	*values, t_color *background)
 	return (free_dpointer(res), EXIT_SUCCESS);
 }
 
-int	check_for_name(char *temp, t_game *cub3d, char *t1, int i)
+int	continue_check(t_game *cub3d, char *t1, char *sub, int i)
 {
-	int		temp_rgb_value;
-	char	*sub;
+	int	temp_rgb_value;
 
-	t1 = ft_strtrim(temp, " \t");
-	while (t1[i] && t1[i] != ' ' && t1[i] != '\t')
-		i++;
-	sub = ft_substr(t1, 0, i);
-	if (control_names_and_values(sub, cub3d, 1))
-		return (free (t1), free (sub), EXIT_FAILURE);
 	if (check_same(sub, "NO") == 0 && !cub3d->parse.no_pth)
 		cub3d->parse.no_pth = ft_strtrim(t1 + i, " \t");
 	else if (check_same(sub, "SO") == 0 && !cub3d->parse.so_pth)
@@ -56,18 +49,32 @@ int	check_for_name(char *temp, t_game *cub3d, char *t1, int i)
 	else if (check_same(sub, "EA") == 0 && !cub3d->parse.ea_pth)
 		cub3d->parse.ea_pth = ft_strtrim(t1 + i, " \t");
 	else if (check_same(sub, "F") == 0 && !cub3d->fl_cntrl++)
-		{
-			temp_rgb_value = take_rgb_value(ft_strtrim(t1 + i, " \t"), &cub3d->floor);
-			return (free(t1), free(sub), temp_rgb_value);
-		}
+	{
+		temp_rgb_value = take_rgb_value(ft_strtrim(t1 + i, " \t"),
+				&cub3d->floor);
+		return (free(t1), free(sub), temp_rgb_value);
+	}
 	else if (check_same(sub, "C") == 0 && !cub3d->cl_cntrl++)
-		{
-			temp_rgb_value = take_rgb_value(ft_strtrim(t1 + i, " \t"), &cub3d->ceil);
-				return (free(t1), free(sub), temp_rgb_value);
-		}
+	{
+		temp_rgb_value = take_rgb_value(ft_strtrim(t1 + i, " \t"), &cub3d->ceil);
+		return (free(t1), free(sub), temp_rgb_value);
+	}
 	else
 		return (free(sub), free(t1), EXIT_FAILURE);
 	return (free(sub), free (t1), EXIT_SUCCESS);
+}
+
+int	check_for_name(char *temp, t_game *cub3d, char *t1, int i)
+{
+	char	*sub;
+
+	t1 = ft_strtrim(temp, " \t");
+	while (t1[i] && t1[i] != ' ' && t1[i] != '\t')
+		i++;
+	sub = ft_substr(t1, 0, i);
+	if (control_names_and_values(sub, cub3d, 1))
+		return (free (t1), free (sub), EXIT_FAILURE);
+	return (continue_check(cub3d, t1, sub, i));
 }
 
 int	take_all_textures_path(char	**temp, t_game *cub3d)
@@ -97,28 +104,6 @@ int	take_all_textures_path(char	**temp, t_game *cub3d)
 	if (take_and_control_map((temp + i), cub3d))
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
-}
-
-char	**turn_map_list2array(t_list *list, int size)
-{
-	char	**res;
-	t_list	*temp;
-	int		i;
-
-	res = malloc(size * sizeof(char *));
-	if (res == NULL)
-		return (NULL);
-	temp = list;
-	i = 0;
-	while (temp != NULL && temp->content != NULL)
-	{
-		res[i] = ft_strtrim(temp->content, "\n");
-		i++;
-		temp = temp->next;
-	}
-	res[i] = NULL;
-	ft_lstclear(&list, free_if);
-	return (res);
 }
 
 int	take_all_things_from_doc(t_game *cub3d)
