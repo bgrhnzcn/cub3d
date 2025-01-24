@@ -16,23 +16,23 @@
 # ifdef __linux__
 
 #  include <X11/keysym.h>
-#  define ESC_KEY XK_Escape
-#  define X_KEY XK_x
-#  define Z_KEY XK_z
-#  define O_KEY XK_o
-#  define Q_KEY XK_q
-#  define W_KEY XK_w
-#  define E_KEY XK_e
-#  define R_KEY XK_r
-#  define A_KEY XK_a
-#  define S_KEY XK_s
-#  define D_KEY XK_d
-#  define F_KEY XK_f
-#  define P_KEY XK_p
-#  define RIGHT_KEY XK_Right
-#  define LEFT_KEY XK_Left
-#  define UP_KEY XK_Up
-#  define DOWN_KEY XK_Down
+#  define ESC_KEY 0xff1b
+#  define X_KEY 0x0078
+#  define Z_KEY 0x007a
+#  define O_KEY 0x006f
+#  define Q_KEY 0x0071
+#  define W_KEY 0x0077
+#  define E_KEY 0x0065
+#  define R_KEY 0x0072
+#  define A_KEY 0x0061
+#  define S_KEY 0x0073
+#  define D_KEY 0x0064
+#  define F_KEY 0x0066
+#  define P_KEY 0x0070
+#  define RIGHT_KEY 0xff53
+#  define LEFT_KEY 0xff51
+#  define UP_KEY 0xff52
+#  define DOWN_KEY 0xff54
 
 # else
 
