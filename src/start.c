@@ -117,12 +117,13 @@ format\n", 2), EXIT_FAILURE);
 	fd = open(cub3d->parse.map_path, O_RDONLY);
 	if (fd == -1)
 		return (ft_putstr_fd("Can't open given file!\n[", 2),
-		ft_putstr_fd(cub3d->parse.map_path, 2), ft_putstr_fd("]\n", 2),
-		EXIT_FAILURE);
+			ft_putstr_fd(cub3d->parse.map_path, 2),
+			ft_putstr_fd("]\n", 2), EXIT_FAILURE);
 	size_of_map(&temp, fd);
 	close(fd);
 	if (temp == NULL || take_map_size(temp) < 9)
-		return (ft_putstr_fd("Given file must contain at least 9 lines\n", 2), EXIT_FAILURE);
+		return (ft_putstr_fd("Given file must contain at least 9 lines\n", 2),
+			EXIT_FAILURE);
 	if (take_all_textures_path(temp, cub3d))
 		return (free_dpointer(temp), EXIT_FAILURE);
 	return (free_dpointer(temp), EXIT_SUCCESS);

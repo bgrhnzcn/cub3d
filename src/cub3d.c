@@ -63,7 +63,8 @@ int	main(int argc, char **argv)
 
 	cub3d = (t_game){0};
 	if (argc != 2)
-		return (ft_putstr_fd("Error!\nInvalid argument count!\n", 2), EXIT_FAILURE);
+		return (ft_putstr_fd("Error!\nInvalid argument count!\n", 2),
+			EXIT_FAILURE);
 	cub3d.parse.map_path = argv[1];
 	init_game(&cub3d);
 	mlx_hook(cub3d.mlx.win.win,
