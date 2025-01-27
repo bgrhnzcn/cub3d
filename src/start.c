@@ -118,8 +118,8 @@ int	take_all_things_from_doc(t_game *cub3d)
 		return (printf("Can't open given file!\n"), EXIT_FAILURE);
 	size_of_map(&temp, fd);
 	close(fd);
-	if (temp == NULL || take_map_size(temp) < 3)
-		return (printf("Given file must contain at least 3 line\n"));
+	if (temp == NULL || take_map_size(temp) < 9)
+		return (printf("Given file must contain at least 9 lines\n"));
 	if (take_all_textures_path(temp, cub3d))
 		return (free_dpointer(temp), EXIT_FAILURE);
 	return (free_dpointer(temp), EXIT_SUCCESS);
