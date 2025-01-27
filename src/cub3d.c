@@ -53,7 +53,7 @@ void	terminate_prog(t_game *cub3d, int status)
 		free(cub3d->mlx.mlx);
 	}
 	if (status == EXIT_FAILURE)
-		printf("Error!\n");
+		ft_putstr_fd("Error!\n", 2);
 	exit(status);
 }
 
@@ -63,7 +63,7 @@ int	main(int argc, char **argv)
 
 	cub3d = (t_game){0};
 	if (argc != 2)
-		return (printf("Error!\nInvalid argument count!\n"), EXIT_FAILURE);
+		return (ft_putstr_fd("Error!\nInvalid argument count!\n", 2), EXIT_FAILURE);
 	cub3d.parse.map_path = argv[1];
 	init_game(&cub3d);
 	mlx_hook(cub3d.mlx.win.win,
