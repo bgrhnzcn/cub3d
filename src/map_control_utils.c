@@ -76,7 +76,9 @@ int	check_for_undefined_char(char **map)
 		{
 			if (ft_strchr("10WSNE ", map[i][j]) == NULL)
 			{
-				printf("There is an undefined char '%c' in map!\n", map[i][j]);
+				ft_putstr_fd("There is an undefined char '", 2);
+				ft_putchar_fd(map[i][j], 2);
+				ft_putstr_fd("' in map!\n", 2);
 				return (EXIT_FAILURE);
 			}
 		}

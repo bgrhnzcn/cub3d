@@ -24,7 +24,9 @@ static void	init_tex(t_game *cub3d, t_img *tex, char *path)
 			&tex->size_line, &tex->line_count);
 	if (tex->img == NULL)
 	{
-		printf("Can't find texture file.\n");
+		ft_putstr_fd("Cannot find texture file.\n[", 2);
+		ft_putstr_fd(path, 2);
+		ft_putstr_fd("]\n", 2);
 		terminate_prog(cub3d, EXIT_FAILURE);
 	}
 	tex->data = (t_color *)mlx_get_data_addr(tex->img, &tex->bits_per_pixel,

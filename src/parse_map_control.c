@@ -21,8 +21,8 @@ int	check_for_char(char **map, int i, int j, int *control)
 			if (*control == false)
 				*control = true;
 			else
-				return (printf("There is no WSNE character or there are too many \
-of them!\n"), EXIT_FAILURE);
+				return (ft_putstr_fd("There is no WSNE character or there are \
+too many of them!\n", 2), EXIT_FAILURE);
 		}
 	}
 	return (EXIT_SUCCESS);
@@ -39,8 +39,8 @@ int	check_for_row(char **map)
 		if (check_for_char(map, i, -1, &control) == EXIT_FAILURE)
 			return (EXIT_FAILURE);
 	if (control == false)
-		return (printf("There is no WSNE character or there are too many of \
-them!\n"), EXIT_FAILURE);
+		return (ft_putstr_fd("There is no WSNE character or there are \
+too many of them!\n", 2), EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }
 
@@ -74,14 +74,14 @@ int	control_map(t_game	*cub3d, char	**map)
 			(cub3d->player.pos.y - 0.5), cub3d);
 	if (cub3d->parse.retval != EXIT_SUCCESS)
 	{
-		printf("There is a hole in map.\n");
+		ft_putstr_fd("There is a hole in map.\n", 2);
 		return (EXIT_FAILURE);
 	}
 	flood_fill_ever(cpy, (cub3d->player.pos.x - 0.5),
 		(cub3d->player.pos.y - 0.5), cub3d);
 	if (check_doubles(cpy))
 	{
-		printf("Double map.\n");
+		ft_putstr_fd("Double map.\n", 2);
 		return (EXIT_FAILURE);
 	}
 	free_dpointer(cpy);
