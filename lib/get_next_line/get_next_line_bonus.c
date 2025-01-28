@@ -53,11 +53,11 @@ char	*get_line_str(char *buffer)
 		res = malloc(sizeof(char) * (i + 1));
 	if (res == NULL)
 		return (NULL);
-	i = 0;
-	while (buffer[i] && buffer[i] != '\n')
-		(void)((res[i] = buffer[i]) && (i++, 1));
-	if (buffer[i] == '\n')
-		(void)((res[i] = buffer[i]) && (i++, 1));
+	i = -1;
+	while (buffer[++i] && buffer[i] != '\n')
+		res[i] = buffer[i];
+	if (buffer[++i - 1] == '\n')
+		res[i - 1] = buffer[i - 1];
 	res[i] = 0;
 	return (res);
 }
