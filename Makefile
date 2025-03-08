@@ -10,6 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
+MLX_LINUX_LINK = https://cdn.intra.42.fr/document/document/31130/minilibx-linux.tgz
 TEST_FILE = maps/huge.cub
 
 ################################################################################
@@ -217,11 +218,11 @@ endif
 # MiniLibX Directory Creation
 $(MLX_DIR): | $(LIB_DIR)
 ifeq ($(OS), Linux) # Linux
-	@printf "$(BOLD_MAGENTA)Downloading MiniLibX For Linux...\n"
-	@curl -s https://cdn.intra.42.fr/document/document/28880/minilibx-linux.tgz -o $(MLX_DIR).tgz
+	printf "$(BOLD_MAGENTA)Downloading MiniLibX For Linux...\n"
+	curl -s $(MLX_LINUX_LINK) -o $(MLX_DIR).tgz
 else ifeq ($(OS), Darwin) # MacOS
-	@printf "$(BOLD_MAGENTA)Downloadig MiniLibX For MacOS...\n"
-	@curl -s https://cdn.intra.42.fr/document/document/28881/minilibx_opengl.tgz -o $(MLX_DIR).tgz
+	printf "$(BOLD_MAGENTA)Downloadig MiniLibX For MacOS...\n"
+	curl -s https://cdn.intra.42.fr/document/document/28881/minilibx_opengl.tgz -o $(MLX_DIR).tgz
 endif # Common
 	@mkdir $(MLX_DIR)
 	@tar xvfz $(MLX_DIR).tgz --strip 1 -C $(MLX_DIR) > /dev/null 2> /dev/null
